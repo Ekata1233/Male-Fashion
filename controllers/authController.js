@@ -80,7 +80,7 @@ const loginController=async(req,resp)=>{
                 phone:user.phone,
                 address:user.address  ,
                 role:user.role              
-            },
+            }, 
             token
         })
 
