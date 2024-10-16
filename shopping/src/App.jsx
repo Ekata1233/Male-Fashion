@@ -18,6 +18,12 @@ import Createproduct from './admin/Createproduct';
 import Users from './admin/Users';
 import Orders from './user/Orders';
 import Profile from './user/Profile';
+import Shop from './assets/components/Shop';
+import ShopDetails from './assets/components/ShopDetails';
+import ShoppingCart from './assets/components/ShoppingCart';
+import Blog from './assets/components/Blog';
+import BlogDetails from './assets/components/BlogDetails';
+import Checkout from './assets/components/Checkout';
 
 function App() {
   return (
@@ -28,6 +34,17 @@ function App() {
           <Route path='/' element={<Home />} />
           <Route path='/About' element={<About />} />
           <Route path='/Contact' element={<Contact />} />
+          <Route path='/Shop' element={<Shop />} />
+          <Route path='/ShopDetails' element={<ShopDetails />} />
+          <Route path='/ShoppingCart' element={<ShoppingCart/>} />
+          <Route path='/Blog' element={<Blog />} />
+          <Route path='/BlogDetails' element={<BlogDetails/>} />
+          <Route path='/Checkout' element={<Checkout/>} />
+
+
+
+
+
 
           {/* Private Routes for Users */}
           <Route path="Dashboard" element={<PrivateRoute />}>
