@@ -3,6 +3,8 @@ const colors=require('colors')
 const dotenv=require('dotenv')
 const connectDB=require('./config/db.js')
 const authRoute=require('./routes/authRoute.js')
+const categoryRoutes=require('./routes/categoryRoute.js')
+const productRoutes=require('./routes/productRoute.js')
 const cors=require('cors')
 
 
@@ -14,6 +16,8 @@ const app=express()
 app.use(cors())
 app.use(express.json())
 app.use("/api/auth",authRoute)
+app.use('/api/category',categoryRoutes)
+app.use("/api/product",productRoutes)
 app.get("/",(req,resp)=>{
     resp.send("<h1>Welcome to E-commerce App</h1>")
 })

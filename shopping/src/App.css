@@ -6,7 +6,8 @@
 
   text-align: center;
 }
-*{
+
+* {
   font-family: "Nunito Sans", sans-serif;
   font-optical-sizing: auto;
   font-style: normal;
@@ -14,12 +15,70 @@
     "wdth" 100,
     "YTLC" 500;
 }
-.navbar .nav-link{
- color: black;
- 
+
+.black-nav {
+  text-decoration: none;
+  font-weight: 200;
+  font-size: 15px;
+
 }
 
-.navbar a{
+.divNavBlack {
+  color: white;
+  background-color: black;
+
+}
+
+.navbar .nav-link {
+  color: black;
+  position: relative;
+
+}
+
+.navbar .nav-home::after {
+  color: black;
+  content: "";
+  height: 3px;
+  width: 50%;
+  background: #e53637;
+  display: block;
+  position: absolute;
+  /* left: 0; */
+  /* bottom: -8px; */
+  /* opacity: 0; */
+  transform: scale(1, 1);
+  transition: transform 0.5s ease-in;
+  pointer-events: none;
+
+}
+
+.navbar .nav-line::after {
+  color: black;
+  content: "";
+  height: 3px;
+  width: 50%;
+  background: #e53637;
+  display: block;
+  position: absolute;
+  /* left: 0; */
+  /* bottom: -8px; */
+  /* opacity: 0; */
+  transform: scale(0, 1);
+  transition: transform 0.5s ease-in;
+  pointer-events: none;
+
+}
+
+.navbar .nav-line:hover::after {
+  /* opacity: 1; */
+  transform: scale(1, 1);
+}
+
+.navbar .nav-link:hover {
+  color: black;
+}
+
+.navbar a {
   color: black;
   text-decoration: none;
   font-size: 18px;
@@ -27,16 +86,327 @@
   font-size: 18px;
 
 }
-.black-nav{
-  text-decoration: none;
-  font-weight: 200;
-  font-size: 15px;
-}
-.divNavBlack{
-  color:white;
-  background-color: black;
+
+.nav-search {
+  position: absolute;
+  right: 10%;
+  background-color: rgb(255, 106, 0);
 }
 
+.navFix {
+  position: fixed;
+  width: 100%;
+
+  z-index: 999;
+  /* Stays behind the top nav but above the rest */
+  background-color: #fff;
+}
+
+.custom-carousel .carousel-control-prev-icon {
+  filter: invert(100%);
+  color: black;
+  position: absolute;
+  left: 20%;
+}
+
+.custom-carousel .carousel-control-next-icon {
+  filter: invert(100%);
+  color: black;
+  position: absolute;
+  right: 20%;
+}
+
+.hero {}
+
+.cara-img {
+  margin-top: 9%;
+}
+
+.caraText {
+  position: absolute;
+  top: 40%;
+  left: 10%;
+  text-align: left !important;
+}
+
+.heroButton {
+  background-color: black !important;
+  border: 1px solid black !important;
+  color: white !important;
+  border-radius: 0% !important;
+}
+
+.banner1-text {
+  position: absolute;
+  text-align: left;
+  right: 44%;
+  top: 15%;
+  width: 300px;
+  z-index: 1;
+  color: black;
+}
+
+.collection p {
+  color: #111111;
+  font-weight: 700;
+}
+
+.banner1 {
+  position: absolute;
+  right: 20%;
+}
+
+.banner2 {
+  /* padding-top: 40%; */
+
+}
+
+.banner2-row {
+  /* position: absolute; */
+  padding-top: 27%;
+  margin-left: 3% !important;
+
+}
+
+.banner3-col {
+  padding-top: 8%;
+}
+
+.banner3 {
+  padding-right: 14%;
+}
+
+.banner3-text {
+  position: absolute;
+  top: 67%;
+  width: 300px;
+}
+
+.banner2-text {
+  margin-left: 9%;
+}
+
+.banner-p {
+  width: 100px;
+}
+
+.banner-p::after {
+  color: black;
+  content: "";
+  height: 2px;
+  width: 95px;
+  background: #111111;
+  display: block;
+  position: absolute;
+  /* left: 0; */
+  /* bottom: -8px; */
+  /* opacity: 0; */
+  transition: 0.5s ease-in;
+  pointer-events: none;
+
+}
+
+.banner-p:hover::after {
+  /* opacity: 1; */
+  background-color: #e53637;
+  width: 45px;
+}
+
+/* Default styles (for small screens) */
+
+/* 425px and below */
+.banner3 {
+  /* margin-right: ; */
+}
+
+@media (max-width: 426px) {
+  .cara-img {
+    height: 400px;
+  }
+
+  .divNavBlack {
+    display: none;
+  }
+
+  .caraText {
+    font-size: xx-small;
+    position: absolute;
+    top: 28%;
+    left: 10%;
+    text-align: left !important;
+  }
+
+  .caraText h1 {
+    font-size: 15px;
+  }
+
+  .caraText button {
+    font-size: 7px;
+  }
+
+  .heroArrow {
+    margin-bottom: 2px;
+  }
+
+  .banner1 {
+    width: 82%;
+    right: 9%;
+  }
+
+  .banner1-text {
+    top: 28%;
+    left: 9% !important;
+  }
+
+  .banner2-row {
+    padding-top: 100%;
+    margin-left: 0% !important;
+  }
+
+  .banner2-col {
+    padding-top: 35%;
+    margin-left: 0%;
+  }
+
+  .banner2 {
+    width: 100%;
+    margin-left: -8%;
+  }
+
+  .banner2-text {
+    margin-top: 3%;
+    margin-left: -4%;
+  }
+
+  .banner3 {
+    padding-top: 1%;
+    width: 400px;
+    margin-right: -11%;
+  }
+
+  .banner3-text {
+    padding-top: 12px;
+    top: 100%;
+    left: 4% !important;
+    width: 250px;
+  }
+}
+
+/* 426px to 768px */
+@media (min-width: 426px) and (max-width: 768px) {
+  .cara-img {
+    height: 600px;
+  }
+
+  .caraText {
+    font-size: 15px;
+    position: absolute;
+    top: 30%;
+    left: 10%;
+    text-align: left !important;
+  }
+
+  .caraText h1 {
+    font-size: 24px;
+  }
+
+  .caraText button {
+    font-size: 12px;
+  }
+
+  .heroArrow {
+    margin-bottom: 2px;
+  }
+
+  .banner1 {
+    right: 5% !important;
+    /* width: 40% !important; */
+  }
+
+  .banner1-text {
+    left: 5% !important;
+  }
+
+  .banner2-row {
+    padding-top: 70%;
+    margin-left: 0% !important;
+  }
+
+  .banner2 {
+    margin-left: -27%;
+  }
+
+  .banner2-text {
+    margin-top: 3%;
+    margin-left: 3%;
+  }
+
+  .banner3 {
+    /* padding-top: 3%; */
+    padding-right: 0%;
+  }
+
+  .banner3-text {
+    top: 82%;
+    right: 60%;
+    width: 250px;
+  }
 
 
+}
 
+/* 769px to 1024px */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .cara-img {
+    height: 650px;
+  }
+
+  .caraText {
+    font-size: 20px;
+    position: absolute;
+    top: 36%;
+    left: 10%;
+    text-align: left !important;
+  }
+
+  .caraText h1 {
+    font-size: 32px;
+  }
+
+  .caraText button {
+    font-size: 15px;
+  }
+
+  .heroArrow {
+    margin-bottom: 2px;
+  }
+
+  .banner1 {
+    right: 10%;
+    width: 40%;
+  }
+
+  .banner3-col {
+    padding-top: 20%;
+  }
+
+  .banner3 {
+    padding-right: 1%;
+    width: 85%;
+  }
+
+  .banner2 {
+    width: 97%;
+    left: 10%;
+  }
+
+  .banner2-row {
+    /* position: absolute; */
+    padding-top: 37%;
+
+  }
+
+  .banner1-text {
+    left: 30%;
+  }
+}

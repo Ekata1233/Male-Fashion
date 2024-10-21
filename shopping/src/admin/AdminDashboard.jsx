@@ -6,7 +6,7 @@ import AdminMenu from '../assets/components/AdminMenu'
 function AdminDashboard() {
   const [auth]=useAuth()
   return (
-    <div>
+    <div className='' style={{paddingTop:"200px"}}>
       <Container fluid>
         <Row>
           <Col md={3}>
