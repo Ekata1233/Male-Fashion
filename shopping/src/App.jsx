@@ -24,6 +24,7 @@ import ShoppingCart from './assets/components/ShoppingCart';
 import Blog from './assets/components/Blog';
 import BlogDetails from './assets/components/BlogDetails';
 import Checkout from './assets/components/Checkout';
+import Products from './admin/Products';
 
 function App() {
   return (
@@ -58,6 +59,8 @@ function App() {
             <Route path='admin' element={<AdminDashboard />} />
             <Route path='admin/Createcategory' element={<Createcategory />} />
             <Route path='admin/Createproduct' element={<Createproduct />} />
+            <Route path='admin/Products' element={<Products />} />
+
             <Route path='admin/Users' element={<Users />} />
           </Route>
 

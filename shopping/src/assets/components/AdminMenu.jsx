@@ -14,6 +14,9 @@ function AdminMenu() {
           <Link to="/Dashboard/admin/Createproduct">Create Product</Link>
         </ListGroup.Item>
         <ListGroup.Item>
+          <Link to="/Dashboard/admin/Products">Products</Link>
+        </ListGroup.Item>
+        <ListGroup.Item>
           <Link to="/Dashboard/admin/Users">Users</Link>
         </ListGroup.Item>
       </ListGroup>
