@@ -3,6 +3,7 @@ import { Col, Container, Row } from 'react-bootstrap'
 import Card from 'react-bootstrap/Card';
 import {Link} from 'react-router-dom'
 import AdminMenu from '../assets/components/AdminMenu';
+import { CiStar } from "react-icons/ci";
 function Products() {
   const [products,setProducts]=useState([])
   function getprods()
@@ -22,44 +23,59 @@ function Products() {
     //eslint-disable-next-line
   },[])
   return (
-    <div>
-      <Container fluid>
-        <Row>
-          <Col md={3}>
-          <AdminMenu/>
-          </Col>
-          <Col md={9}>
-          <Container>
-<div className="row row-cols-1 row-cols-md-3 g-4">
-    {
-      products.map((item,index)=>{
-        return (
-          <Link to={`/Singleproduct/${item.slug}`} key={item._id} className='product-link'>
-          <div className="col">
-          <Card style={{ width: '18rem' }} key={index}>
-            <Card.Img variant="top" className='w-100 mx-auto d-block' src={`http://localhost:4300/api/product/getphoto/${item._id}`} />
-            <Card.Body className='text-center'>
-              <Card.Title>{item.name}</Card.Title>
-              <Card.Text>
-               {item.description}
-               
-               <h4>₹ {item.price}</h4>
-              </Card.Text>
-                
-            </Card.Body>
-          </Card>
-          </div>
-          </Link>
-        )
-      })
-    }
-    </div> 
-</Container>
-          </Col>
-        </Row>
-      </Container>
+    <div style={{ paddingTop: "200px" }}>
+  <Container>
+    <Row>
+      {/* Admin Menu on the left */}
+      <Col md={3}>
+        <AdminMenu />
+      </Col>
 
-    </div>
+      {/* Product List */}
+      <Col md={9}>
+        <Container>
+          <div className="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-4">
+            {products.map((item, index) => {
+              return (
+                <Link
+                  to={`/Singleproduct/${item.slug}`}
+                  key={item._id}
+                  className="product-link text-decoration-none"
+                >
+                  <div className="col">
+                  <Card
+                          key={index}
+                          className="productCard"
+                          style={{ padding: "0", margin: "0" }}
+                        >
+                          <Card.Img
+                            variant="top"
+                            className="w-100 mx-auto d-block"
+                            src={`http://localhost:4300/api/product/getphoto/${item._id}`}
+                          />
+                          <Card.Body className="text-start p-2">
+                            <p className="m-0 p-0">{item.name}</p>
+                            <div className="d-flex gap-1 my-1">
+                              <CiStar />
+                              <CiStar className='text-dark'/>
+                              <CiStar />
+                              <CiStar />
+                              <CiStar />
+                            </div>
+                            <h5 className="m-0 fw-bold">₹ {item.price}</h5>
+                          </Card.Body>
+                        </Card>
+                  </div>
+                </Link>
+              );
+            })}
+          </div>
+        </Container>
+      </Col>
+    </Row>
+  </Container>
+</div>
+
   )
 }
 

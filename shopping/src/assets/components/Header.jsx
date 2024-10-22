@@ -65,7 +65,7 @@ function Header() {
         </Container>
       </div>
       <Navbar expand="lg" className="py-4 shadow-bottom" style={{ boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)' }}>
-  <Container className="px-5">
+  <Container className="ps-3 pe-4">
     <Navbar.Brand as={Link} to="/" className="me-auto">
       <img src="/logo.png" alt="Logo" />
     </Navbar.Brand>
@@ -105,14 +105,14 @@ function Header() {
           </Nav.Link>
         </Nav>
 
-        <Nav className="ms-auto">
-          <Nav.Link as={Link} to="/" className="px-3">
+        <Nav className="ms-auto ps-5">
+          <Nav.Link as={Link} to="/" className="px-4">
             <img src="/search.png" alt="search" />
           </Nav.Link>
-          <Nav.Link as={Link} to="/" className="px-3">
+          <Nav.Link as={Link} to="/" className="px-4">
             <img src="/heart.png" alt="heart" />
           </Nav.Link>
-          <Nav.Link as={Link} to="/" className="px-3">
+          <Nav.Link as={Link} to="/" className="px-4">
             <img src="/cart.png" alt="cart" />
           </Nav.Link>
         </Nav>

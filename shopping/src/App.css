@@ -218,7 +218,12 @@
 .banner3 {
   /* margin-right: ; */
 }
-
+.productCard {
+  border: none !important;
+  border-radius: 0% !important;
+  text-decoration: none !important;
+  
+}
 @media (max-width: 426px) {
   .cara-img {
     height: 400px;
