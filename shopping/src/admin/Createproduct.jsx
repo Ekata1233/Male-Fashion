@@ -173,8 +173,9 @@ function Createproduct() {
                 <Form.Group as={Row} className="mb-3">
                   
                     <Col sm={{span :10, offset: 2}}>
-                    <Button type="submit" className="mb-4">Add Product</Button>
-                    </Col>
+                    <Button variant="dark" className="heroButton mt-4  px-4 py-3">
+              Add Product 
+            </Button>                    </Col>
                 </Form.Group>
             </Form>
           </Container>

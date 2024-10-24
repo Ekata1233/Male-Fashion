@@ -6,6 +6,7 @@ const authRoute=require('./routes/authRoute.js')
 const categoryRoutes=require('./routes/categoryRoute.js')
 const productRoutes=require('./routes/productRoute.js')
 const dealRoutes=require('./routes/dealRoute.js')
+const cartRoutes=require('./routes/cartRoute.js')
 const cors=require('cors')
 
 
@@ -19,6 +20,7 @@ app.use(express.json())
 app.use("/api/auth",authRoute)
 app.use('/api/category',categoryRoutes)
 app.use("/api/product",productRoutes)
+app.use("/api/cart",cartRoutes)
 app.use("/api/deal",dealRoutes)
 app.get("/",(req,resp)=>{
     resp.send("<h1>Welcome to E-commerce App</h1>")

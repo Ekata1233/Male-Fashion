@@ -17,6 +17,9 @@ function AdminMenu() {
           <Link to="/Dashboard/admin/Products" className='text-decoration-none text-dark'>Products</Link>
         </ListGroup.Item>
         <ListGroup.Item>
+          <Link to="/Dashboard/admin/Createdeal" className='text-decoration-none text-dark'>Create Deal</Link>
+        </ListGroup.Item>
+        <ListGroup.Item>
           <Link to="/Dashboard/admin/Users" className='text-decoration-none text-dark'>Users</Link>
         </ListGroup.Item>
       </ListGroup>
