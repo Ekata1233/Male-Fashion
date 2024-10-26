@@ -252,6 +252,104 @@
   color: white !important;
   border-radius: 0% !important;
 }
+.deal-sale{
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  line-height: 20px;
+  right: 10%;
+ margin-top: -40px;
+ background-color: #111111;
+}
+.sale{
+  font-weight: 100;
+}
+.white-div{
+  position: relative;
+  background-color: #ffffff;
+}
+
+.h11 {
+  position: absolute;
+  /* width: 300px; */
+  left: 22%;
+  top: 45%;
+  font-weight: 800;
+  border-right: 5px solid;
+  white-space: nowrap;
+  overflow: hidden;
+  animation: typing 2s  infinite alternate-reverse, cursor 0.4s  ;
+  animation-fill-mode: forwards;
+}
+
+@keyframes cursor {
+  50% {
+    border-color: transparent;
+  }
+}
+
+@keyframes typing {
+  0% {
+    width: 0;
+  }
+  100% {
+    width: 390px;
+  }
+}
+.white-div {
+  width: 75%;
+  height: 100%;
+  background-color: white;
+  position: relative;
+  overflow: hidden;
+  animation: moveAnimation 5s infinite; /* Apply the moveable animation */
+}
+
+.white-div::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border: 5px solid transparent; /* Change the border width as needed */
+  border-radius: 10px; /* Optional: for rounded corners */
+  animation: borderAnimation 2s infinite; /* Adjust duration as needed */
+  z-index: 1; /* Make sure the border is above the background */
+}
+
+@keyframes borderAnimation {
+  0% {
+    border-color: rgba(0, 0, 255, 0); /* Start transparent */
+    transform: scale(1);
+  }
+  50% {
+    border-color: rgba(0, 0, 255, 1); /* Fully visible */
+    transform: scale(1.1); /* Slightly scale up */
+  }
+  100% {
+    border-color: rgba(0, 0, 255, 0); /* Fade back to transparent */
+    transform: scale(1);
+  }
+}
+
+@keyframes moveAnimation {
+  0% {
+    transform: translateY(0); /* Start position */
+  }
+  50% {
+    transform: translateY(-10px); /* Move up */
+  }
+  100% {
+    transform: translateY(0); /* Return to start */
+  }
+}
+
+
+
+
+
+
 @media (max-width: 426px) {
   .cara-img {
     height: 400px;
