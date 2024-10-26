@@ -57,12 +57,12 @@ function DealWeek() {
   return (
     <div className="mt-5 py-5 deal">
       <Container>
-        <Carousel interval={2000}>
+        <Carousel interval={3000}>
           {deal.map((item, index) => (
             <Carousel.Item key={index}>
               <Row className="py-5">
                 <Col lg={4} className="position-relative pe-5">
-                  <div className="white-div w-75 h-100"></div>
+                  <div className="white-div"></div>
                   <h3 className=" h11">
                     <span className="text-danger">D</span>EAL{" "}
                     <span className="text-danger">O</span>F{" "}
