@@ -33,57 +33,41 @@ function Users() {
   }, []);
 
   return (
-    <div style={{ paddingTop: "200px" }}>
+    <div className="users-page" style={{paddingTop:"200px"}}>
       <Container>
         <Row>
-          <Col md={3}>
+          <Col md={3} sm={12}>
             <AdminMenu />
           </Col>
-          <Col md={9} className=' '>
-         
-          <h1 className='text-center pb-3'>All Users</h1>
-            <table className='striped  responsive table w-100'>
-              
-              <thead>
-                <tr>
-                  <th>Name</th>
-                  <th>Email</th>
-                  <th>Phone</th>
-                  <th>Address</th>
-                  <th>Answer</th>
-                  <th>Role</th>
-                </tr>
-              </thead>
-              <tbody>
-                  {
-                    users.map((user, index)=>{
-                      return (
-                        <tr key={index}>
-                            <td>{user.name}</td>
-                            <td>{user.email}</td>
-                            <td>{user.phone}</td>
-                            <td>{user.address}</td>
-                            <td>{user.answer}</td>
-                            <td>{user.role}</td>
-                        </tr>
-                      )
-                    })
-                  }
-              </tbody>
-            </table>
-            {/* <h1>All Users</h1>
-            {error ? (
-              <p>{error}</p>
-            ) : users.length > 0 ? (
-              users.map((user, index) => (
-                <div key={index}>
-                  
-                </div>
-              ))
-            ) : (
-              <p>No users found</p>
-            )} */}
-           
+          <Col md={9} sm={12}>
+            <h1 className="text-center pb-3">All Users</h1>
+            <div className="table-responsive">
+              <table className="table table-striped w-100">
+                <thead>
+                  <tr>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Phone</th>
+                    <th>Address</th>
+                    <th>Answer</th>
+                    <th>Role</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {users.map((user, index) => (
+                    <tr key={index}>
+                      <td>{user.name}</td>
+                      <td>{user.email}</td>
+                      <td>{user.phone}</td>
+                      <td>{user.address}</td>
+                      <td>{user.answer}</td>
+                      <td>{user.role}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+            {error && <p className="text-danger">{error}</p>}
           </Col>
         </Row>
       </Container>
