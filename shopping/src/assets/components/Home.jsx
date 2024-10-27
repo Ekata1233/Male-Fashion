@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react'
-import { useAuth } from '../../context/auth'
 import Hero from './Hero';
 import Collections from './Collections';
+import { useAuth } from '../../context/auth';
+
 import DealWeek from './DealWeek';
 import { FcBusinessContact } from 'react-icons/fc';
 import { Button, Card, Col, Container, Row } from 'react-bootstrap';
@@ -12,6 +13,7 @@ function Home() {
   const [categories,setCategories] = useState([])
   const [checked, setChecked] = useState([])
   const [radio,setRadio] = useState([])
+  const [auth,setAuth]=useAuth()
 
   function getprods(){
     fetch("http://localhost:4300/api/product/getproducts").then((resp1) => {
@@ -82,7 +84,7 @@ function Home() {
       <Hero/>
       <Collections/>
       <DealWeek/>
-      {/* {JSON.stringify(auth)} */}
+      {JSON.stringify(auth)}
 
     {/* <Row className="" style={{paddingTop:"200px"}}>
       <Col md={2}>
