@@ -82,13 +82,13 @@ function Createproduct() {
 
   return (
     <div style={{paddingTop:"200px"}}>
-      <Container fluid>
+      <Container >
         <Row>
           <Col md={3}>
             <AdminMenu />
           </Col>
 
-          <Col md={9}>
+          <Col md={9} className="w-75">
           <Container>
             <h1 className="mt-4 text-center">Add New Product</h1>
             <Form onSubmit={(e)=>addProduct(e)}>

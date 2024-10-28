@@ -6,7 +6,7 @@ function AdminMenu() {
   return (
     <div className="admin-menu">
       <Container className="p-0">
-        <ListGroup defaultActiveKey="#link1" className="text-start ">
+        <ListGroup defaultActiveKey="#link1" className="text-start">
           <h4 className="mb-4 text-center">Admin Panel</h4>
           <ListGroup.Item className="admin-menu-item">
             <Link to="/Dashboard/admin/Createcategory" className="text-decoration-none text-dark">Create Category</Link>

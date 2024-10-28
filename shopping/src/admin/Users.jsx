@@ -40,7 +40,7 @@ function Users() {
             <AdminMenu />
           </Col>
           <Col md={9} sm={12}>
-            <h1 className="text-center pb-3">All Users</h1>
+            <h4 className="text-center pb-3 fw-bold">All Users</h4>
             <div className="table-responsive">
               <table className="table table-striped w-100">
                 <thead>
@@ -50,7 +50,7 @@ function Users() {
                     <th>Phone</th>
                     <th>Address</th>
                     <th>Answer</th>
-                    <th>Role</th>
+                    
                   </tr>
                 </thead>
                 <tbody>
@@ -61,7 +61,7 @@ function Users() {
                       <td>{user.phone}</td>
                       <td>{user.address}</td>
                       <td>{user.answer}</td>
-                      <td>{user.role}</td>
+                     
                     </tr>
                   ))}
                 </tbody>

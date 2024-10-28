@@ -5,9 +5,12 @@ import Navbar from "react-bootstrap/Navbar";
 import { Link } from "react-router-dom";
 import { NavDropdown } from "react-bootstrap";
 import { useAuth } from "../../context/auth";
+import Searchinput from "./Searchinput";
+import { useCart } from "../../context/cart";
 
 function Header() {
   const [auth, setAuth] = useAuth();
+  const [cart]=useCart()
   function handleLogout() {
     setAuth({
       ...auth,
@@ -103,6 +106,7 @@ function Header() {
           <Nav.Link as={Link} to="/Contact" className="px-4 nav-line m-1" style={{}}>
             Contact
           </Nav.Link>
+          <Searchinput/>
         </Nav>
 
         <Nav className="ms-auto ps-5">
@@ -112,9 +116,11 @@ function Header() {
           <Nav.Link as={Link} to="/" className="px-4">
             <img src="/heart.png" alt="heart" />
           </Nav.Link>
-          <Nav.Link as={Link} to="/" className="px-4">
-            <img src="/cart.png" alt="cart" />
-          </Nav.Link>
+          <Nav.Link as={Link} to="/Cart" className="px-4 position-relative">
+  <img src="/cart.png" alt="cart" />
+  <sup >{cart?.length}</sup>
+</Nav.Link>
+
         </Nav>
       </div>
     </Navbar.Collapse>

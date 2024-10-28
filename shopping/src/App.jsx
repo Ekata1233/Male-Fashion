@@ -27,6 +27,9 @@ import Checkout from './assets/components/Checkout';
 import Products from './admin/Products';
 import Createdeal from './admin/createDeal';
 import Updateproduct from './admin/Updateproduct';
+import Search from './assets/components/Search';
+import Cartitems from './assets/components/Cartitems';
+
 
 function App() {
   return (
@@ -37,6 +40,11 @@ function App() {
           <Route path='/' element={<Home />} />
           <Route path='/About' element={<About />} />
           <Route path='/Contact' element={<Contact />} />
+          <Route path='/Contact' element={<Contact />} />
+          <Route path='/Cart' element={<Cartitems />} />
+
+          <Route path='/Search' element={<Search />} />
+
           <Route path='/Shop' element={<Shop />} />
           <Route path='/ShopDetails' element={<ShopDetails />} />
           <Route path='/ShoppingCart' element={<ShoppingCart/>} />

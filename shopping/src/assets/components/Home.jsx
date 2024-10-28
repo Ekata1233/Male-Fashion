@@ -7,8 +7,10 @@ import DealWeek from './DealWeek';
 import { FcBusinessContact } from 'react-icons/fc';
 import { Button, Card, Col, Container, Row } from 'react-bootstrap';
 import { Prices } from './Prices';
+import { useCart } from '../../context/cart';
 
 function Home() {
+  const [cart,setCart]=useCart()
   const [products,setProducts] = useState([])
   const [categories,setCategories] = useState([])
   const [checked, setChecked] = useState([])
@@ -84,9 +86,9 @@ function Home() {
       <Hero/>
       <Collections/>
       <DealWeek/>
-      {JSON.stringify(auth)}
+      {/* {JSON.stringify(auth)} */}
 
-    {/* <Row className="" style={{paddingTop:"200px"}}>
+    <Row className="" style={{paddingTop:"200px"}}>
       <Col md={2}>
         <h5 className="mb-3">Filter By Category</h5>
         {
@@ -129,7 +131,7 @@ function Home() {
                           {item.description}
                           <h4>{item.price}</h4>
                         </Card.Text>
-                        <Button variant="success">Add To Cart</Button>
+                        <Button variant="success" onClick={()=>setCart([...cart,item])}>Add To Cart</Button>
                       </Card.Body>
                     </Card>
                   </div>
@@ -139,7 +141,7 @@ function Home() {
           </div>
         </Container>
       </Col>
-    </Row> */}
+    </Row>
    </div>
   )
 }
