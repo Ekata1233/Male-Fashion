@@ -19,20 +19,20 @@ function Searchinput() {
         })
     }
   return (
-    <div>
+    <div className=''>
         <Form inline onSubmit={handleSubmit}>
-        <Row>
-          <Col xs="auto">
+        <Row className='pt-3'>
+          <Col >
             <Form.Control
               type="search"
               placeholder="Search"
               value={values.keyword}
-              className=" mr-sm-2"
+              className=" mr-sm-2 "
               onChange={(e)=>setValues({...values,keyword:e.target.value})}
             />
           </Col>
-          <Col xs="auto">
-            <Button type="submit">Search</Button>
+          <Col className=''>
+            <Button type="submit" className='bg-light border-none'><img src="/search.png" alt="search" /></Button>
           </Col>
         </Row>
       </Form>

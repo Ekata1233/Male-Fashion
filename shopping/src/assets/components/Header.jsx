@@ -106,12 +106,14 @@ function Header() {
           <Nav.Link as={Link} to="/Contact" className="px-4 nav-line m-1" style={{}}>
             Contact
           </Nav.Link>
-          <Searchinput/>
+          
         </Nav>
 
         <Nav className="ms-auto ps-5">
+        <Searchinput />
           <Nav.Link as={Link} to="/" className="px-4">
-            <img src="/search.png" alt="search" />
+         
+          
           </Nav.Link>
           <Nav.Link as={Link} to="/" className="px-4">
             <img src="/heart.png" alt="heart" />

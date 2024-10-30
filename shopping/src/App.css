@@ -442,7 +442,16 @@
   color: #212529 !important; /* Bootstrap's dark text color */
   border-color: #212529 !important;
 }
-
+ 
+/* ******************************About************************************ */
+.going{
+  font-size: 20px;
+  padding-bottom: 10px;
+}
+.Quote{
+  font-size: 60px;
+  color: #e53637;
+}
 
 
 @media (max-width: 426px) {
