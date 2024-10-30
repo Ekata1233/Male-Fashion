@@ -6,7 +6,7 @@ import { useAuth } from '../context/auth'
 function Dashboard() {
   const [auth]=useAuth()
   return (
-    <div>
+    <div style={{paddingTop:"200px"}}>
       <Container fluid>
           <Row>
             <Col md={3}>
