@@ -33,9 +33,9 @@ function Signup() {
   }
 
   return (
-    <div className=' pt-3 '  style={{paddingTop:"250px"}}>
+    <div className='  ' style={{paddingTop:"200px"}}>
       <h1 className='mt-5 mb-3'>SignUp</h1>
-    <Container className=''>
+    <Container className='' >
          <Form className='text-start w-50 m-auto  p-3 mb-5 shadow p-3 mb-5 bg-white rounded' onSubmit={userSignup}>
       
       <Form.Group  controlId="formGridName">

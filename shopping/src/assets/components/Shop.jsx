@@ -8,6 +8,7 @@ import NavDropdown from "react-bootstrap/NavDropdown";
 import Form from "react-bootstrap/Form";
 import Accordion from "react-bootstrap/Accordion";
 import { Prices } from "./Prices";
+import { FaPlus } from "react-icons/fa6";
 
 function Shop() {
   const [isFirstDropdownOpen, setIsFirstDropdownOpen] = useState(false);
@@ -237,20 +238,66 @@ function Shop() {
                       key={item._id}
                       className="product-link text-decoration-none"
                     >
-                      <div className="col">
+                      <div className="col addTo">
                         <Card
-                        
                           key={index}
                           className="productCard"
                           style={{ padding: "0", margin: "0" }}
                         >
-                          <Card.Img
-                            variant="top"
-                            className="w-100 mx-auto d-block"
-                            src={`http://localhost:4300/api/product/getphoto/${item._id}`}
-                          />
+                          <div
+                            style={{
+                              position: "relative",
+                              display: "flex",
+                              justifyContent: "center",
+                            }}
+                          >
+                            <Card.Img
+                              variant="top"
+                              className="w-100 mx-auto d-block"
+                              src={`http://localhost:4300/api/product/getphoto/${item._id}`}
+                            />
+                            <a
+                              href=""
+                              style={{
+                                position: "absolute",
+                                top: "10px",
+                                right: "10px",
+                              }}
+                              className="heart"
+                            >
+                              <img src="./heart.png" alt="Add to favorites" />
+                            </a>
+                          </div>
                           <Card.Body className="text-start p-2">
-                            <p className="m-0 p-0 fw-bold">{item.name}</p>
+                            <div className="addToCart">
+                              <FaPlus
+                                style={{ color: "#e53637", fontSize: "12px" }}
+                              />
+                              <a
+                                href=""
+                                variant="success"
+                                onClick={() => {
+                                  setHeat([...heart, item]);
+                                  localStorage.setItem(
+                                    "heart",
+                                    JSON.stringify([...heart, item])
+                                  );
+                                }}
+                                style={{
+                                  backgroundColor: "transparent",
+                                  border: "none",
+                                  color: "#e53637",
+                                  fontWeight: "bold",
+                                  textDecoration: "none",
+                                }}
+                              >
+                                Add To Cart
+                              </a>
+                            </div>
+
+                            <p className="m-0 p-0 fw-bold prodName">
+                              {item.name}
+                            </p>
                             <div className="d-flex gap-1 my-1">
                               <CiStar />
                               <CiStar />
@@ -259,10 +306,11 @@ function Shop() {
                               <CiStar />
                             </div>
 
-                            <p>Available Size :<span> </span> 
-                               {item.size}
+                            <p>
+                              Available Size :<span> </span>
+                              {item.size}
                             </p>
-                            
+
                             <h5 className="m-0 fw-bold">₹ {item.price}</h5>
                           </Card.Body>
                         </Card>

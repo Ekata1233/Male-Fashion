@@ -1,8 +1,40 @@
 import { Col, Container, Row } from "react-bootstrap";
 import { MdOutlineKeyboardArrowRight } from "react-icons/md";
 import { RxQuote } from "react-icons/rx";
+import { useEffect, useState } from "react";
 
 function About() {
+  const [numberOfUsers, setNumberOfUsers] = useState(0);
+  const [numberOfCategories, setNumberOfCategories] = useState(0); 
+  async function fetchUserCount() {
+    try {
+      const response = await fetch("http://localhost:4300/api/user/getuser");
+      if (!response.ok) throw new Error("Failed to fetch users");
+      const data = await response.json();
+      setNumberOfUsers(data.user.length);
+    } catch (error) {
+      console.error("Error fetching user count:", error);
+      setNumberOfUsers(0);
+    }
+  }
+
+  async function fetchCategoryCount() { 
+    try {
+      const response = await fetch("http://localhost:4300/api/category/getcategory");
+      if (!response.ok) throw new Error("Failed to fetch categories");
+      const data = await response.json();
+      setNumberOfCategories(data.category.length); 
+    } catch (error) {
+      console.error("Error fetching category count:", error);
+      setNumberOfCategories(0);
+    }
+  }
+
+  useEffect(() => {
+    fetchUserCount();
+    fetchCategoryCount(); 
+  }, []);
+
   return (
     <div style={{ paddingTop: "160px" }}>
       <div
@@ -76,100 +108,128 @@ function About() {
             <img
               src="/testimonial-pic.jpg"
               alt="testimonial"
-              className="w-100"
+              className="w-100 h-100"
             />
           </Col>
         </Row>
       </Container>
-      <Container className=" px-md-5 mt-5">
+      <Container className=" px-md-5 mt-5 total">
         <Row>
-          <Col className="d-flex">
-            <div>
-              1
+          <Col className="d-flex " lg={3} md={6}>
+            <div className="pe-3">
+              <h2>{numberOfUsers}</h2>
             </div>
-            <div>
-              Our Users
-            </div>
-          </Col>
-          <Col className="d-flex">
-          <div>
-              <h1>1</h1>
-            </div>
-            <div>
-              Total Categories
+            <div className="text-start total-span">
+              <span>Our 
+                <br/>
+                Users</span>
             </div>
           </Col>
-          <Col className="d-flex">
-          <div>
-              1
+          <Col className="d-flex pb-md-4"lg={3} md={6}>
+            <div className="pe-3">
+              <h2>{numberOfCategories}</h2> 
             </div>
-            <div>
-              In Country
+            <div className="text-start total-span">
+            <span>Total 
+                <br/>
+                Categories</span>
             </div>
           </Col>
-          <Col className="d-flex">
-          <div>
-              1
+          <Col className="d-flex" lg={3} md={6}>
+            <div className="pe-3">
+              <h2>102</h2>
             </div>
-            <div>
-              Happy Customer
+            <div className="text-start total-span">
+            <span>In 
+                <br/>
+                country</span>
+            </div>
+          </Col>
+          <Col className="d-flex" lg={3} md={6}>
+            <div className="pe-3">
+              <h2>98%</h2>
+            </div>
+            <div className="text-start total-span">
+            <span>Happy 
+                <br/>
+                Customers</span>
             </div>
           </Col>
         </Row>
       </Container>
       <Container className="px-3 px-md-5 mt-5">
-        <Row>
-          <p style={{color:"#e53637"}} className="fw-bold">OUR TEAM</p>
-          <h1 className="fw-bold pb-5">Meet Our Team</h1>
-          <Col>
-            <div>
-                <img src="./team-1.jpg"/>
-                <h4 className="fw-bold text-start ps-2 pt-4">John Smith</h4>
-                <p className="text-start ps-2 text-secondary">Fashion Design</p>
-            </div>
-          </Col>
-          <Col>
-            <div>
-                <img src="./team-2.jpg"/>
-                <h4 className="fw-bold text-start ps-2 pt-4">Christine Wise</h4>
-                <p className="text-start ps-2 text-secondary">C.E.O</p>
-            </div>
-          </Col>
-          <Col>
-            <div>
-                <img src="./team-3.jpg"/>
-                <h4 className="fw-bold text-start ps-2 pt-4">Sean Robbins</h4>
-                <p className="text-start ps-2 text-secondary">Manager</p>
-            </div>
-          </Col>
-          <Col>
-            <div>
-                <img src="./team-4.jpg"/>
-                <h4 className="fw-bold text-start ps-2 pt-4">Lucy Myers</h4>
-                <p className="text-start ps-2 text-secondary">Delivery</p>
-            </div>
-          </Col>
-        </Row>
-         
-      </Container>
-      <Container>
-      <p style={{color:"#e53637"}} className="fw-bold">PARTNER</p>
-      <h1 className="fw-bold pb-5">Happy Clients</h1>
-      <Row>
-        <Col></Col>
-        <Col></Col>
-        <Col></Col>
-        <Col></Col>
-      </Row>
-      <Row>
-        <Col></Col>
-        <Col></Col>
-        <Col></Col>
-        <Col></Col>
-      </Row>
-      
-        
-      </Container>
+  <Row className="text-center ">
+    <p style={{ color: "#e53637" }} className="fw-bold">OUR TEAM</p>
+    <h1 className="fw-bold pb-5">Meet Our Team</h1>
+    
+    <Col xs={12} sm={6} md={6} lg={3} className="mb-4">
+      <div>
+        <img src="./team-1.jpg" alt="Team Member" className="img-fluid w-100" />
+        <h4 className="fw-bold pt-3">John Smith</h4>
+        <p className="text-secondary">Fashion Design</p>
+      </div>
+    </Col>
+    
+    <Col xs={12} sm={6} md={6}lg={3} className="mb-4">
+      <div>
+        <img src="./team-2.jpg" alt="Team Member" className="img-fluid w-100" />
+        <h4 className="fw-bold pt-3">Christine Wise</h4>
+        <p className="text-secondary">C.E.O</p>
+      </div>
+    </Col>
+    
+    <Col xs={12} sm={6} md={6} lg={3} className="mb-4">
+      <div>
+        <img src="./team-3.jpg" alt="Team Member" className="img-fluid w-100" />
+        <h4 className="fw-bold pt-3">Sean Robbins</h4>
+        <p className="text-secondary">Manager</p>
+      </div>
+    </Col>
+    
+    <Col xs={12} sm={6} md={6} lg={3} className="mb-4">
+      <div>
+        <img src="./team-4.jpg" alt="Team Member" className="img-fluid w-100" />
+        <h4 className="fw-bold pt-3">Lucy Myers</h4>
+        <p className="text-secondary">Delivery</p>
+      </div>
+    </Col>
+  </Row>
+</Container>
+
+<Container className="py-5">
+  <p style={{ color: "#e53637" }} className="fw-bold pt-5">PARTNER</p>
+  <h1 className="fw-bold pb-5">Happy Clients</h1>
+  <Row className="pb-sm-2 pb-lg-5">
+    <Col xs={6} sm={4} md={3} lg={3} className="text-center ">
+      <img src="./client-1.png" alt="Client 1" className=""/>
+    </Col>
+    <Col xs={6} sm={4} md={3} lg={3} className="text-center mb-4">
+      <img src="./client-2.png" alt="Client 2"/>
+    </Col>
+    <Col xs={6} sm={4} md={3} lg={3} className="text-center mb-4">
+      <img src="./client-3.png" alt="Client 3"/>
+    </Col>
+    <Col xs={6} sm={4} md={3} lg={3} className="text-center mb-4">
+      <img src="./client-4.png" alt="Client 4"/>
+    </Col>
+  </Row>
+  <Row className="pt-sm-2 pt-lg-5">
+    <Col xs={6} sm={4} md={3} lg={3} className="text-center mb-4">
+      <img src="./client-5.png" alt="Client 5"/>
+    </Col>
+    <Col xs={6} sm={4} md={3} lg={3} className="text-center mb-4">
+      <img src="./client-6.png" alt="Client 6"/>
+    </Col>
+    <Col xs={6} sm={4} md={3} lg={3} className="text-center mb-4">
+      <img src="./client-7.png" alt="Client 7"/>
+    </Col>
+    <Col xs={6} sm={4} md={3} lg={3} className="text-center mb-4">
+      <img src="./client-8.png" alt="Client 8"/>
+    </Col>
+  </Row>
+</Container>
+
+
     </div>
   );
 }

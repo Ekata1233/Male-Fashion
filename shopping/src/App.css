@@ -439,10 +439,29 @@
 
 .pagination .page-item.active .page-link {
   background-color: white !important;
-  color: #212529 !important; /* Bootstrap's dark text color */
+  color: #212529 !important; 
   border-color: #212529 !important;
 }
- 
+ .addToCart{
+  display: none !important;
+ }
+ .addTo :hover .addToCart{
+  display: block !important;
+ }
+ .addTo :hover .prodName{
+  display: none !important;
+ }
+ .addTo .heart{
+  display: none !important;
+  background-color: white;
+  padding: 5px 10px;
+
+ }
+.addTo :hover .heart{
+  display: block !important;
+}
+
+
 /* ******************************About************************************ */
 .going{
   font-size: 20px;
@@ -452,7 +471,30 @@
   font-size: 60px;
   color: #e53637;
 }
+.total h2{
+  color: #111111;
+  font-weight: 700;
+  font-size: 60px;
+  line-height: 50px;
+}
+.total-span{
+  color: #3d3d3d;
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 25px;
+  overflow: hidden;
+}
 
+/* *****************************pages dropdown**************************** */
+.custom-dropdown .dropdown-menu {
+  background-color: black !important; 
+  border-radius: 0px;
+}
+
+.custom-dropdown .dropdown-item {
+  color: white; 
+  font-size: 15px;
+}
 
 @media (max-width: 426px) {
   .cara-img {
@@ -540,7 +582,10 @@
     padding: 12px 15px;
   }
 
+
 }
+/* *************************425************************************* */
+
 
 /* 426px to 768px */
 @media (min-width: 426px) and (max-width: 768px) {

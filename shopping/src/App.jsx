@@ -29,6 +29,7 @@ import Createdeal from './admin/createDeal';
 import Updateproduct from './admin/Updateproduct';
 import Search from './assets/components/Search';
 import Cartitems from './assets/components/Cartitems';
+import Heartitems from './assets/components/heartitems';
 
 
 function App() {
@@ -42,6 +43,8 @@ function App() {
           <Route path='/Contact' element={<Contact />} />
           <Route path='/Contact' element={<Contact />} />
           <Route path='/Cart' element={<Cartitems />} />
+          <Route path='/Heart' element={<Heartitems />} />
+
 
           <Route path='/Search' element={<Search />} />
 

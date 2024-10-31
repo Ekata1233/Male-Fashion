@@ -33,14 +33,14 @@ function Users() {
   }, []);
 
   return (
-    <div className="users-page" style={{paddingTop:"200px"}}>
+    <div className="users-page" style={{ paddingTop: "200px" }}>
       <Container>
         <Row>
           <Col md={3} sm={12}>
             <AdminMenu />
           </Col>
           <Col md={9} sm={12}>
-            <h4 className="text-center pb-3 fw-bold">All Users</h4>
+           
             <div className="table-responsive">
               <table className="table table-striped w-100">
                 <thead>
@@ -50,7 +50,6 @@ function Users() {
                     <th>Phone</th>
                     <th>Address</th>
                     <th>Answer</th>
-                    
                   </tr>
                 </thead>
                 <tbody>
@@ -61,7 +60,6 @@ function Users() {
                       <td>{user.phone}</td>
                       <td>{user.address}</td>
                       <td>{user.answer}</td>
-                     
                     </tr>
                   ))}
                 </tbody>

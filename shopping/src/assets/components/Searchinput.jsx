@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import Row from 'react-bootstrap/Row';
@@ -8,6 +8,10 @@ import { useSearch } from '../../context/search';
 function Searchinput() {
     const [values,setValues]=useSearch()
     const navigate=useNavigate()
+    const [isFocused, setIsFocused] = useState(false);
+
+    const handleFocus = () => setIsFocused(true);
+    const handleBlur = () => setIsFocused(false);
     function handleSubmit(e)
     {
         e.preventDefault()
@@ -21,18 +25,29 @@ function Searchinput() {
   return (
     <div className=''>
         <Form inline onSubmit={handleSubmit}>
-        <Row className='pt-3'>
+        <Row className='pt-2'>
           <Col >
-            <Form.Control
-              type="search"
-              placeholder="Search"
-              value={values.keyword}
-              className=" mr-sm-2 "
-              onChange={(e)=>setValues({...values,keyword:e.target.value})}
-            />
+          <Form.Control
+            type="search"
+            placeholder="Search"
+            value={values.keyword}
+            className="mr-sm-2"
+            style={{
+                width: "200px",
+                height: "30px",
+                borderColor: isFocused ? 'grey' : '',
+                boxShadow: isFocused ? '0 0 5px grey' : ''
+            }}
+            onFocus={handleFocus}
+            onBlur={handleBlur}
+            onChange={(e) => setValues({ ...values, keyword: e.target.value })}
+        />
           </Col>
           <Col className=''>
-            <Button type="submit" className='bg-light border-none'><img src="/search.png" alt="search" /></Button>
+          <button type="submit" className="bg-white border-0 pe-4">
+  <img src="/search.png" alt="search" />
+</button>
+
           </Col>
         </Row>
       </Form>

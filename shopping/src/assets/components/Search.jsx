@@ -6,7 +6,7 @@ import { useSearch } from '../../context/search';
 function Search() {
     const [values,setValues]=useSearch()
   return (
-    <div>
+    <div style={{paddingTop:"200px"}}>
         <h5 className='mb-4'>
             {
                 values?.result.length<1?"No Products Found":`Found ${values?.result.length} Products`
