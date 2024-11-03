@@ -9,6 +9,8 @@ import Form from "react-bootstrap/Form";
 import Accordion from "react-bootstrap/Accordion";
 import { Prices } from "./Prices";
 import { FaPlus } from "react-icons/fa6";
+import { useHeart } from '../../context/heartlist'
+
 
 function Shop() {
   const [isFirstDropdownOpen, setIsFirstDropdownOpen] = useState(false);
@@ -16,6 +18,8 @@ function Shop() {
   const [categories, setCategories] = useState([]);
   const [checked, setChecked] = useState([]);
   const [radio, setRadio] = useState([]);
+  const [heart, setHeart] = useHeart();
+
 
   const [currentPage, setCurrentPage] = useState(1);
   const productsPerPage = 12;
@@ -264,6 +268,10 @@ function Shop() {
                                 right: "10px",
                               }}
                               className="heart"
+                              onClick={()=>{
+                                setHeart([...heart,item])
+                                localStorage.setItem('heart',JSON.stringify([...heart,item]))
+                              }}
                             >
                               <img src="./heart.png" alt="Add to favorites" />
                             </a>
@@ -277,7 +285,7 @@ function Shop() {
                                 href=""
                                 variant="success"
                                 onClick={() => {
-                                  setHeat([...heart, item]);
+                                  setHeart([...heart, item]);
                                   localStorage.setItem(
                                     "heart",
                                     JSON.stringify([...heart, item])
