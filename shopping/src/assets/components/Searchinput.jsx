@@ -31,13 +31,8 @@ function Searchinput() {
             type="search"
             placeholder="Search"
             value={values.keyword}
-            className="mr-sm-2"
-            style={{
-                width: "200px",
-                height: "30px",
-                borderColor: isFocused ? 'grey' : '',
-                boxShadow: isFocused ? '0 0 5px grey' : ''
-            }}
+            className="mr-sm-2 search"
+          
             onFocus={handleFocus}
             onBlur={handleBlur}
             onChange={(e) => setValues({ ...values, keyword: e.target.value })}

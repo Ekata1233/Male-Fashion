@@ -512,18 +512,47 @@
 }
 .blog-Img{
   position: absolute;
-  top: 100%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  margin-top: -130px;
+  
+
 }
-.responsive-img {
-  min-width: 100%;
-    border-radius: 5px;
-  margin-top: 20%;
-  padding: 20px;
-}
-.blog-div-main{
+.blog-div-main {
   padding-top: 150px;
+}
+
+.blog-h1 {
+  width: 70%;
+  font-size: 3rem;
+}
+.share-i{
+  color: #ffffff;
+    font-size: 18px;
+    height: 46px;
+    display: inline-block;
+    width: 46px;
+    border-radius: 50%;
+    line-height: 46px;
+    text-align: center;
+    background: #4267b2;
+}
+.share-p{
+  font-size: 18px;
+  line-height: 36px;
+}
+.share-when{
+  background-color: #f2f3ee;
+  font-style: italic;
+  width: 100%;
+}
+.share-when p{
+  font-style: italic;
+}
+.share-i1{
+  top: -20px;
+  left: 5%;
+}
+.share-col{
+  width: 100%;
 }
 @media (max-width: 426px) {
   .cara-img {
@@ -617,8 +646,7 @@
 }
 
 .responsive-img {
-  
-  margin-top: -30%;
+  margin-top: 10%;
   padding: 0%;
 }
 .blog-div-main{
