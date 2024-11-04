@@ -554,6 +554,13 @@
 .share-col{
   width: 100%;
 }
+.form .form-control{
+  padding: 13px;
+  border-radius: 0px;
+}
+.post{
+  letter-spacing: 5px;
+}
 @media (max-width: 426px) {
   .cara-img {
     height: 400px;

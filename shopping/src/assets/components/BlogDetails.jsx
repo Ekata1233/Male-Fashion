@@ -1,9 +1,10 @@
 import React from "react";
-import { Col, Container, Row } from "react-bootstrap";
+import { Col, Container, Row,Button } from "react-bootstrap";
 import { FaFacebookF, FaTwitter, FaYoutube, FaLinkedinIn } from "react-icons/fa";
 import { FaQuoteLeft } from "react-icons/fa6";
 import { IoIosArrowRoundBack } from "react-icons/io";
 import { IoIosArrowRoundForward } from "react-icons/io";
+import Form from 'react-bootstrap/Form';
 function BlogDetails() {
   return (
     <div className="blog-div-main">
@@ -35,11 +36,11 @@ function BlogDetails() {
           </Container>
         </div>
       </Container>
-      <Container className="d-flex justify-content-center">
+      <Container className="d-flex justify-content-center ">
         <Row className="w-75">
-          <Col lg={2} md={3} xs={12} className="d-flex flex-column align-items-center my-5 mb-lg-0">
+          <Col lg={1} md={12} xs={12} className="d-flex flex-column align-items-center my-5 mb-lg-0 pe-5">
             <span className="d-flex justify-content-center fw-bolder fs-5 mb-4">SHARE</span>
-            <div className="social-icons d-flex flex-column align-items-center">
+            <div className="social-icons d-flex flex-column ">
               <a href="" className="share-i" style={{backgroundColor:"#4267B2"}}>
               <FaFacebookF className=""/>
               </a>
@@ -57,7 +58,7 @@ function BlogDetails() {
               
             </div>
           </Col>
-          <Col lg={10} md={9} xs={12} className="mt-5 ">
+          <Col lg={11} md={9} xs={12} className="mt-5 ps-4">
           <div className="share-col">
             <div className="text-start share-p">
               <p>
@@ -102,7 +103,7 @@ function BlogDetails() {
                 <h6 className="fw-bold text-end">#Fashion #Trending #2020</h6>
               </Col>
             </Row>
-            <Row>
+            <Row className="mb-5">
               <Col>
                 <div style={{border:"1px solid #ebebeb",padding:"25px 30px 30px"}}>
                  <p className="text-start "> <a href="" className="text-start text-secondary text-decoration-none"><IoIosArrowRoundBack className="fs-3 "/>Previous Pod</a></p>
@@ -119,7 +120,29 @@ function BlogDetails() {
               </Col>
             </Row>
             </div>
-            <h2>Leave A Comment</h2>
+            <h2 className="mt-5 pt-5 pb-4 fw-bold">Leave A Comment</h2>
+            <Form>
+      <Row className="mb-3 pb-2 form">
+        <Form.Group as={Col} controlId="formGridEmail">
+          <Form.Control type="email" placeholder="Enter email" className="" />
+        </Form.Group>
+
+        <Form.Group as={Col} controlId="formGridPassword">
+          <Form.Control type="password" placeholder="Password" />
+        </Form.Group>
+        <Form.Group as={Col} controlId="formGridPassword">
+          <Form.Control type="password" placeholder="Password" />
+        </Form.Group>
+      </Row>
+
+      <Form.Group className="mb-3 mt-4" controlId="exampleForm.ControlTextarea1">
+        <Form.Control as="textarea" placeholder="Password"rows={3} className="pb-5"/>
+      </Form.Group>
+
+      <Button variant="dark" className="heroButton mt-4  px-4 py-3 post">
+              POST COMMENT
+            </Button>
+    </Form>
           </Col>
         </Row>
       </Container>
