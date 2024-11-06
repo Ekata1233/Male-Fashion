@@ -86,8 +86,8 @@ function Createcategory() {
 
   return (
     <div className=""style={{paddingTop:"200px"}}>
-      <Container fluid className="">
-        <Row>
+      <Container  className="">
+        <Row className="mx-lg-4">
           <Col md={3}>
             <AdminMenu />
           </Col>

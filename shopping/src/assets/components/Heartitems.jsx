@@ -3,7 +3,7 @@ import { useHeart } from '../../context/heartlist'
 import { useAuth } from '../../context/auth'
 import { Button, Col, Container, Row } from 'react-bootstrap'
 
-function heartitems() {
+function Heartitems() {
     const [heart,setHeart]=useHeart()
     const [auth,setAuth]=useAuth()
     const totlePrice=()=>{
@@ -69,4 +69,4 @@ function heartitems() {
   )
 }
 
-export default heartitems
+export default Heartitems
