@@ -13,42 +13,43 @@ function Updateproduct() {
   const [photo, setPhoto] = useState("");
   const [categories, setCategories] = useState([]);
   const [category, setCategory] = useState("");
-  const [id,setId]=useState(null)
+  const [id,setId]=useState()
   const [auth] = useAuth();
   const params=useParams()
   const navigate=useNavigate()
   const token = auth.token;
 
   function getAllCategory() {
-    fetch("http://localhost:4300/api/category/getcategory").then((res1) => {
-      res1.json().then((res2) => {
-        console.log(res2);
-        setCategories(res2.category);
-      });
-    });
-  }
-
-  useEffect(() => {
-    getAllCategory();
-  }, []);
-
-  function getsingleprod(){
-    fetch(`http://localhost:4300/api/product/getsingleproduct/${params.slug}`).then((resp1)=>{
-      resp1.json().then((resp2)=>{
-        console.log(resp2.product)
-        console.log(resp2.product.category)
-        setName(resp2.product.name)
-        setPrice(resp2.product.price)
-        setDescription(resp2.product.description)
-        setQuantity(resp2.product.quantity)
-        setId(resp2.product._id)
-        setCategory(resp2.product.category._id)
+    fetch("http://localhost:4300/api/category/getcategory").then((res1)=>{
+      res1.json().then((res2)=>{
+        console.log(res2)
+        setCategories(res2.category)
       })
     })
+  }
+  useEffect(()=>{
+getAllCategory()
+  },[])
+
+  function getsingleprod(){
+    fetch(`http://localhost:4300/api/product/getsingleproduct/${params.slug}`).then((res1)=>{
+      res1.json().then((res2)=>{
+          console.log(res2)
+          console.log(res2.product.category)
+          setName(res2.product.name)
+          setPrice(res2.product.price)
+          setDescription(res2.product.description)
+          setQuantity(res2.product.quantity)
+          setId(res2.product._id)
+          setCategory(res2.product.category._id)
+      })
+})
   }
   useEffect(() => {
     getsingleprod();
   }, []);
+
+
   function editProduct(e) {
     e.preventDefault();
     const prod = new FormData();
@@ -60,7 +61,7 @@ function Updateproduct() {
     photo && prod.append("photo", photo);
     console.log(prod);
 
-    fetch(`http://localhost:4300/api/product/update/${params.slug}`,{      
+    fetch(`http://localhost:4300/api/product/update/${id}`,{      
       method:"put",
       headers:{
         // "Accept":'application/json',
@@ -202,7 +203,7 @@ function Updateproduct() {
               <Form.Group as={Row} className="mb-3">
                 
                   <Col sm={{span :10, offset: 2}}>
-                  <Button variant="dark" className="heroButton mt-4  px-4 py-3">
+                  <Button variant="dark" type="submit" className="heroButton mt-4  px-4 py-3">
            Edit Product 
           </Button>{" "}    
           <Button variant="danger" onClick={()=>deleteprod(id)} className="deleteButton mt-4  px-4 py-3">

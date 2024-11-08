@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useReducer } from "react";
 import { Container, Row, Col, Pagination, Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { CiStar } from "react-icons/ci";
@@ -9,8 +9,7 @@ import Form from "react-bootstrap/Form";
 import Accordion from "react-bootstrap/Accordion";
 import { Prices } from "./Prices";
 import { FaPlus } from "react-icons/fa6";
-import { useHeart } from '../../context/heartlist'
-
+import { useCart } from "../../context/cart";
 
 function Shop() {
   const [isFirstDropdownOpen, setIsFirstDropdownOpen] = useState(false);
@@ -18,8 +17,20 @@ function Shop() {
   const [categories, setCategories] = useState([]);
   const [checked, setChecked] = useState([]);
   const [radio, setRadio] = useState([]);
-  const [heart, setHeart] = useHeart();
+  const [cart, setCart] = useCart();
+  const [heart, setHeart] = useState(() => {
+    const savedHeart = localStorage.getItem("heart");
+    return savedHeart ? JSON.parse(savedHeart) : [];
+  });
 
+  function reducer(state, action) {
+    switch (action.type) {
+      case "cartfilter":
+        return console.log(state);
+      default:
+        return state;
+    }
+  }
 
   const [currentPage, setCurrentPage] = useState(1);
   const productsPerPage = 12;
@@ -45,53 +56,65 @@ function Shop() {
     setIsFirstDropdownOpen(isOpen);
   };
 
-  useEffect(() => {
-    if (!checked.length || !radio.length) getprods();
-  }, [checked.length, radio.length]);
-
-  function filterProduct() {
-    let data = { checked, radio };
-    fetch("http://localhost:4300/api/product/filter", {
-      method: "post",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(data),
-    }).then((res1) => {
-      res1.json().then((res2) => {
+  function getAllCategory() {
+    fetch("http://localhost:4300/api/category/getcategory")
+      .then((res1) => res1.json())
+      .then((res2) => {
         console.log(res2);
-        setProducts(res2.products);
-        console.log(products);
-      });
-    });
+        setCategories(res2.category);
+      })
+      .catch((error) => console.log(error));
   }
 
-  useEffect(() => {
-    if (checked.length || radio.length) filterProduct();
-  }, [checked.radio]);
+  function getProducts() {
+    fetch("http://localhost:4300/api/product/getproducts")
+      .then((resp1) => resp1.json())
+      .then((resp2) => {
+        console.log(resp2);
+        setProducts(resp2.product);
+      })
+      .catch((error) => console.log(error));
+  }
 
   function handleFilter(value, id) {
     let all = [...checked];
     if (value) {
       all.push(id);
     } else {
-      all = all.filter((c) => c != id);
+      all = all.filter((c) => c !== id);
     }
     setChecked(all);
   }
 
-  function getAllCategory() {
-    fetch("http://localhost:4300/api/category/getcategory").then((res1) => {
-      res1.json().then((res2) => {
+  function filterProduct() {
+    const data = { checked, radio };
+    fetch("http://localhost:4300/api/product/filter", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
+    })
+      .then((res1) => res1.json())
+      .then((res2) => {
         console.log(res2);
-        setCategories(res2.category);
-      });
-    });
+        setProducts(res2.products);
+      })
+      .catch((error) => console.log(error));
   }
 
   useEffect(() => {
     getAllCategory();
+    getProducts();
   }, []);
+
+  useEffect(() => {
+    if (checked.length || radio.length) {
+      filterProduct();
+    } else {
+      getProducts(); // Reset products if no filters are applied
+    }
+  }, [checked, radio]);
 
   function getprods() {
     fetch("http://localhost:4300/api/product/getproducts").then((resp1) => {
@@ -118,10 +141,35 @@ function Shop() {
     ? products.filter((product) => product.size.includes(selectedSize))
     : products;
 
+    const handleWishlistClick = (item) => {
+      const alreadyInWishlist = heart.find((prod) => prod._id === item._id);
+  
+      if (alreadyInWishlist) {
+        alert("Product is already in your wishlist!");
+      } else {
+        const updatedHeart = [...heart, item];
+        setHeart(updatedHeart);
+        localStorage.setItem("heart", JSON.stringify(updatedHeart));
+      }
+    };
+
+    const handleCartClick=(item)=>{
+      const alreadyInCart = cart.find((prod)=>prod._id === item._id);
+      if(alreadyInCart){
+        alert("Product is already in your cartlist")
+      }else{
+        const updatedCart = [...cart,item];
+        setCart(updatedCart)
+        localStorage.setItem("cart",JSON.stringify(updatedCart))
+      }
+    }
+    const isInWishlist = (item) => heart.some((prod) => prod._id === item._id);
+    const isInCartList = (item) => cart.some((prod)=>prod._id === item._id)
+
   return (
     <div className="shopDiv pb-4" style={{ paddingTop: "135px" }}>
       <div
-        className="bg-secondary bg-opacity-25 py-4 mb-5"
+        className="bg-secondary bg-opacity-10 py-4 mb-5"
         style={{ paddingLeft: "10%" }}
       >
         <h4 className="fw-bold">Shop</h4>
@@ -152,16 +200,24 @@ function Shop() {
                   <Accordion.Header>CATEGORIES</Accordion.Header>
                   {categories.map((c) => {
                     return (
-                      <div className="d-flex">
-                        <Accordion.Body
-                          key={c._id}
-                          onChange={(e) =>
-                            handleFilter(e.target.checked, c._id)
-                          }
-                        >
-                          {c.name}
-                        </Accordion.Body>
-                      </div>
+                      // <div className="d-flex">
+                      //   <Accordion.Body
+                      //   style={{cursor:"pointer"}}
+                      //     key={c._id}
+                      //     onClick={(e) =>
+                      //       handleFilter(e.target.checked, c._id)
+                      //     }
+                      //   >
+                      //     {c.name}
+                      //   </Accordion.Body>
+                      // </div>
+                      <Form.Check
+                        className="text-secondary py-2 ms-2"
+                        type="checkbox"
+                        key={c._id}
+                        label={c.name}
+                        onChange={(e) => handleFilter(e.target.checked, c._id)}
+                      />
                     );
                   })}
                 </Accordion.Item>
@@ -237,93 +293,96 @@ function Shop() {
               <div className="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-4">
                 {filteredProducts.map((item, index) => {
                   return (
-                    <Link
-                      to={`/getsingleproduct/${item._id}`}
-                      key={item._id}
-                      className="product-link text-decoration-none"
-                    >
-                      <div className="col addTo">
-                        <Card
-                          key={index}
-                          className="productCard"
-                          style={{ padding: "0", margin: "0" }}
+                    <div className="col addTo">
+                      <Card
+                        key={index}
+                        className="productCard"
+                        style={{ padding: "0", margin: "0" }}
+                      >
+                        <Link
+                          to={`/getsingleproduct/${item._id}`}
+                          key={item._id}
+                          className="product-link text-decoration-none"
                         >
-                          <div
-                            style={{
-                              position: "relative",
-                              display: "flex",
-                              justifyContent: "center",
-                            }}
-                          >
-                            <Card.Img
-                              variant="top"
-                              className="w-100 mx-auto d-block"
-                              src={`http://localhost:4300/api/product/getphoto/${item._id}`}
+                        <Card.Img
+                          variant="top"
+                          className="w-100 mx-auto d-block"
+                          src={`http://localhost:4300/api/product/getphoto/${item._id}`}
+                        />{" "}
+                        </Link>
+                        <a
+                          href=""
+                          style={{
+                            position: "absolute",
+                            top: "10px",
+                            right: "10px",
+                          }}
+                          className="heart"
+                          onClick={() => handleWishlistClick(item)}
+                        >
+                          <img src="./heart.png" alt="Add to favorites" 
+                          style={{ filter: isInWishlist(item) ? "invert(36%) sepia(80%) saturate(7482%) hue-rotate(340deg) brightness(91%) contrast(108%)" : "none" }} />
+                        </a>
+                        <Card.Body className="text-start p-2">
+                          <div className="addToCart">
+                            <FaPlus
+                              style={{ color: "#e53637", fontSize: "12px" }}
                             />
                             <a
                               href=""
+                              variant="success"
+                              // onClick={() => {
+                              //   setCart([...cart, item]);
+                              //   localStorage.setItem(
+                              //     "cart",
+                              //     JSON.stringify([...cart, item])
+                              //   );
+                              // }}
+                              onClick={()=>handleCartClick(item)}
                               style={{
-                                position: "absolute",
-                                top: "10px",
-                                right: "10px",
-                              }}
-                              className="heart"
-                              onClick={()=>{
-                                setHeart([...heart,item])
-                                localStorage.setItem('heart',JSON.stringify([...heart,item]))
+                                backgroundColor: "transparent",
+                                border: "none",
+                                color: "#e53637",
+                                fontWeight: "bold",
+                                textDecoration: "none",
                               }}
                             >
-                              <img src="./heart.png" alt="Add to favorites" />
+                              Add To Cart
                             </a>
                           </div>
-                          <Card.Body className="text-start p-2">
-                            <div className="addToCart">
-                              <FaPlus
-                                style={{ color: "#e53637", fontSize: "12px" }}
-                              />
-                              <a
-                                href=""
-                                variant="success"
-                                onClick={() => {
-                                  setHeart([...heart, item]);
-                                  localStorage.setItem(
-                                    "heart",
-                                    JSON.stringify([...heart, item])
-                                  );
-                                }}
-                                style={{
-                                  backgroundColor: "transparent",
-                                  border: "none",
-                                  color: "#e53637",
-                                  fontWeight: "bold",
-                                  textDecoration: "none",
-                                }}
-                              >
-                                Add To Cart
-                              </a>
-                            </div>
+                          <p className="m-0 p-0 fw-bold prodName">
+                            {item.name}
+                          </p>
+                          <div className="d-flex gap-1 my-1">
+                            <CiStar />
+                            <CiStar />
+                            <CiStar />
+                            <CiStar />
+                            <CiStar />
+                          </div>
 
-                            <p className="m-0 p-0 fw-bold prodName">
-                              {item.name}
-                            </p>
-                            <div className="d-flex gap-1 my-1">
-                              <CiStar />
-                              <CiStar />
-                              <CiStar />
-                              <CiStar />
-                              <CiStar />
-                            </div>
+                          <p>
+                            Available Size :<span> </span>
+                            {item.size}
+                          </p>
 
-                            <p>
-                              Available Size :<span> </span>
-                              {item.size}
-                            </p>
-
-                            <h5 className="m-0 fw-bold">₹ {item.price}</h5>
-                          </Card.Body>
-                        </Card>
-                      </div>
-                    </Link>
+                          <h5 className="fw-bold">₹ {item.price}</h5>
+                          {/* <Button
+                              variant="dark"
+                              className="heroButton mt-4 px-4 py-2"
+                              onClick={() => {
+                                setCart([...cart, item]);
+                                localStorage.setItem(
+                                  "cart",
+                                  JSON.stringify([...cart, item])
+                                );
+                              }}
+                            >
+                              Add To Cart
+                            </Button> */}
+                        </Card.Body>
+                      </Card>
+                    </div>
                   );
                 })}
               </div>
