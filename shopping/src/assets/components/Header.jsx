@@ -123,7 +123,7 @@ function Header() {
               <Nav className="ms-auto ">
                 <Searchinput />
 
-                <Nav.Link as={Link} to="/" className="">
+                <Nav.Link as={Link} to="/Heart" className="">
                   <img src="/heart.png" alt="heart" />
                 </Nav.Link>
                 <Nav.Link

@@ -94,7 +94,7 @@ function Home() {
       <Hero/>
       <Collections/>
       <NewArrivals/>
-      <Row className='mt-4'>
+      {/* <Row className='mt-4'>
         <Col md={2}>
           <h5 className='mb-3'>Filter By Category</h5>
           {categories.map(c => (
@@ -158,7 +158,7 @@ function Home() {
 </Container>
         </Col>
 
-      </Row>
+      </Row> */}
     </div>
   );
 }

@@ -609,6 +609,18 @@
   border-color: #000;
   transform: scale(1.2);
 }
+/* **********************newArivals************************************** */
+.product-row.fade-out {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.2s ease-in-out, transform 0.2s ease-in-out;
+}
+
+.product-row.fade-in {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 0.2s ease-in-out, transform 0.2s ease-in-out;
+}
 @media (max-width: 426px) {
   .cara-img {
     height: 400px;

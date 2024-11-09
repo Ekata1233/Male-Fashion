@@ -136,7 +136,7 @@ function Shop() {
 
   const [selectedSize, setSelectedSize] = useState(null);
 
-  // Filter products by the selected size (if any)
+  
   const filteredProducts = selectedSize
     ? products.filter((product) => product.size.includes(selectedSize))
     : products;
@@ -300,7 +300,7 @@ function Shop() {
                         style={{ padding: "0", margin: "0" }}
                       >
                         <Link
-                          to={`/getsingleproduct/${item._id}`}
+                          to={`/getsingleproduct/${item.slug}`}
                           key={item._id}
                           className="product-link text-decoration-none"
                         >
