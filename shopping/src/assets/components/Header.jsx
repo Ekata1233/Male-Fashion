@@ -7,10 +7,12 @@ import { NavDropdown } from "react-bootstrap";
 import { useAuth } from "../../context/auth";
 import Searchinput from "./Searchinput";
 import { useCart } from "../../context/cart";
+import { useHeart } from "../../context/heartlist";
 
 function Header() {
   const [auth, setAuth] = useAuth();
   const [cart] = useCart();
+  const [heart] = useHeart();
   function handleLogout() {
     setAuth({
       ...auth,
@@ -123,36 +125,17 @@ function Header() {
               <Nav className="ms-auto ">
                 <Searchinput />
 
-                <Nav.Link as={Link} to="/Heart" className="">
+                <Nav.Link as={Link} to="/Heart" className="px-3">
                   <img src="/heart.png" alt="heart" />
+                  <sup>{heart?.length}</sup>
                 </Nav.Link>
                 <Nav.Link
                   as={Link}
                   to="/Cart"
-                  className="px-4 position-relative"
+                  className="px-3 position-relative"
                 >
-                  <div
-                    className="cart-container"
-                    style={{ position: "relative", display: "inline-block" }}
-                  >
-                    <img src="/cart.png" alt="cart" />
-                    <span
-                      style={{
-                        position: "absolute",
-                        top: "63%",
-                        left: "50%",
-                        transform: "translate(-50%, -50%)",
-                        backgroundColor: "",
-                        color: " #e53637",
-                        borderRadius: "50%",
-                        padding: "0.3em 0.6em",
-                        fontSize: "10px",
-                        fontWeight: "bold",
-                      }}
-                    >
-                      {cart?.length}
-                    </span>
-                  </div>
+                  <img src="/cart.png" alt="cart" />
+                  <sup>{cart?.length}</sup>
                 </Nav.Link>
               </Nav>
             </div>
