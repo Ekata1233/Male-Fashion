@@ -37,7 +37,7 @@ function Header() {
                 <Nav.Link as={Link} to="/Signin" className="px-md-3 px-4">
                   SIGNIN
                 </Nav.Link>
-                <Nav.Link as={Link} to="/Faq" className="px-md-3 px-4">
+                <Nav.Link as={Link} to="/FAQs" className="px-md-3 px-4">
                   FAQs
                 </Nav.Link>
               </>

@@ -621,6 +621,46 @@
   transform: translateY(0);
   transition: opacity 0.2s ease-in-out, transform 0.2s ease-in-out;
 }
+
+
+/* Custom styles for the main accordion */
+.accordion-button {
+  background-color: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  outline: none !important;
+}
+
+.accordion-button:focus {
+  box-shadow: none !important;
+  outline: none !important;
+  
+}
+.mainAccor{
+  border: 1px solid rgba(202, 202, 202, 0.177);
+  border-radius: 3px;
+}
+
+.accor{
+  /* border: 1px solid rgba(202, 202, 202, 0.177)!important; */
+
+  border-left: none !important;
+  border-right: none !important;
+
+
+}
+.dark{
+  color: #111111 !important;
+
+}
+.accorhead{
+  font-size: 20px !important;
+  color: #111111 !important;
+}
+.AccorBody{
+  border: none !important;
+}
+
 @media (max-width: 426px) {
   .cara-img {
     height: 400px;

@@ -31,6 +31,7 @@ import Search from './assets/components/Search';
 import Cartitems from './assets/components/Cartitems';
 import Heartitems from './assets/components/heartitems';
 import SingleProduct from './assets/components/SignleProduct';
+import FAQs from './assets/components/FAQs';
 
 
 function App() {
@@ -48,6 +49,8 @@ function App() {
 
 
           <Route path='/Search' element={<Search />} />
+          <Route path='/FAQs' element={<FAQs/>} />
+
 
           <Route path='/Shop' element={<Shop />} />
           <Route path='/ShopDetails' element={<ShopDetails />} />
