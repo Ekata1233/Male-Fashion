@@ -32,6 +32,9 @@ import Cartitems from './assets/components/Cartitems';
 import Heartitems from './assets/components/heartitems';
 import SingleProduct from './assets/components/SignleProduct';
 import FAQs from './assets/components/FAQs';
+import Categories from './admin/Categories';
+import DealWeek from './assets/components/DealWeek';
+import Deals from './admin/Deals';
 
 
 function App() {
@@ -78,7 +81,8 @@ function App() {
             <Route path='admin/Createcategory' element={<Createcategory />} />
             <Route path='admin/Createproduct' element={<Createproduct />} />
             <Route path='admin/Updateproduct/:slug' element={<Updateproduct />} />
-
+            <Route path='admin/Category' element={<Categories />} />
+            <Route path='admin/Deals' element={<Deals />} />
             <Route path='admin/Products' element={<Products />} />
             <Route path='admin/Createdeal' element={<Createdeal/>} />
 

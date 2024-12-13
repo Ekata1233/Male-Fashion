@@ -9,7 +9,7 @@ function Footer() {
         <div className="d-flex justify-content-between">
           <Row>
             <Col sm={6} lg={3} className="mt-5 pt-2">
-              <img src="/footer-logo.png" alt="footerLogo" className="mb-4" />
+              <h1 alt="footerLogo" className="mb-4 fw-bold text-start ms-5" >Ultras .</h1>
               <p className="text-start text-light text-opacity-50 mt-4 mb-4 ms-5 ">
                 The customer is at the heart of our unique business model, which
                 includes design.

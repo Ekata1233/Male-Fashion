@@ -18,7 +18,7 @@ function Contact() {
   <Container className='mt-5 pe-5'>
     <Row>
       <Col lg={6} className='pe-3'>
-        <p className='text-danger fw-bold'>INFORMATION</p>
+        <p className='gold fw-bold'>INFORMATION</p>
         <h1 className='fw-bold'>Contact Us</h1>
         <p className='text-secondary pt-2'>As you might expect of a company that began as a high-end interiors contractor, we pay strict attention.</p>
 

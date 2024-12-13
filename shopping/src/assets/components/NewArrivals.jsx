@@ -4,12 +4,14 @@ import Card from "react-bootstrap/Card";
 import { Link } from "react-router-dom";
 import { CiStar } from "react-icons/ci";
 import { FaPlus } from "react-icons/fa6";
+import { useCart } from "../../context/cart";
 
 function NewArrivals() {
   const [products, setProducts] = useState([]);
   const [newArrivals, setNewArrivals] = useState([]);
   const [showArrival, setShowArrival] = useState(false); 
   const [fade, setFade] = useState(false); 
+  const [cart,setCart]=useCart();
   const [heart, setHeart] = useState(() => {
     const savedHeart = localStorage.getItem("heart");
     return savedHeart ? JSON.parse(savedHeart) : [];
@@ -65,6 +67,70 @@ function NewArrivals() {
   const displayedProducts = showArrival ? newArrivals : products;
   const isInWishlist = (item) => heart.some((prod) => prod._id === item._id);
 
+  const handleWishlistClick = (item) => {
+  
+    const loginData = localStorage.getItem("login");
+  
+    if (!loginData) {
+        alert("Please log in to add items to your wishlist.");
+        return;
+    }
+  
+    const parsedLoginData = JSON.parse(loginData);
+    const userEmail = parsedLoginData?.user?.email; 
+  
+    if (!userEmail) {
+        alert("Email not found in login data.");
+        return;
+    }
+  
+    console.log("User Email: ", userEmail);
+  
+    const heartKey = `heart_${userEmail}`; 
+    const existingHeart = JSON.parse(localStorage.getItem(heartKey)) || [];
+    const alreadyInWishlist = existingHeart.find((prod) => prod._id === item._id);
+  
+    if (alreadyInWishlist) {
+        alert("Product is already in your wishlist!");
+    } else {
+        const updatedHeart = [...existingHeart, item];
+        setHeart(updatedHeart);
+        localStorage.setItem(heartKey, JSON.stringify(updatedHeart));
+        alert("Product successfully added to wishlist.");
+    }
+  };
+
+  const handleCartClick = (item) => {
+    const loginData = localStorage.getItem("login");
+
+    if (!loginData) {
+        alert("Please log in to add items to your cart.");
+        return;
+    }
+
+    const parsedLoginData = JSON.parse(loginData);
+    const userEmail = parsedLoginData?.user?.email; // Access email from the nested 'user' object
+
+    if (!userEmail) {
+        alert("Email not found in login data.");
+        return;
+    }
+
+    console.log("User Email: ", userEmail);
+
+    const cartKey = `cart_${userEmail}`; // Use email to generate a unique cart key
+    const existingCart = JSON.parse(localStorage.getItem(cartKey)) || [];
+    const alreadyInCart = existingCart.find((prod) => prod._id === item._id);
+
+    if (alreadyInCart) {
+        alert("Product is already in your cart.");
+    } else {
+        const updatedCart = [...existingCart, item];
+        setCart(updatedCart);
+        localStorage.setItem(cartKey, JSON.stringify(updatedCart));
+        alert("Product successfully added to cart.");
+    }
+};
 
   return (
     <div className="newArrivalMainDiv my-5" style={{ paddingTop: "100px" }}>
@@ -109,7 +175,10 @@ function NewArrivals() {
                             right: "10px",
                           }}
                           className="heart"
-                          onClick={() => handleWishlistClick(item)}
+                          onClick={(e) =>{
+                            e.preventDefault();
+                            handleWishlistClick(item)
+                          }}
                         >
                           <img src="./heart.png" alt="Add to favorites" 
                           style={{ filter: isInWishlist(item) ? "invert(36%) sepia(80%) saturate(7482%) hue-rotate(340deg) brightness(91%) contrast(108%)" : "none" }} />
@@ -117,7 +186,7 @@ function NewArrivals() {
                     <Card.Body className="text-start p-2">
                     <div className="addToCart">
                             <FaPlus
-                              style={{ color: "#e53637", fontSize: "12px" }}
+                              style={{ color: "#C2A942", fontSize: "12px" }}
                             />
                             <a
                               href=""
@@ -129,11 +198,14 @@ function NewArrivals() {
                               //     JSON.stringify([...cart, item])
                               //   );
                               // }}
-                              onClick={()=>handleCartClick(item)}
+                              onClick={(e)=>
+                                {e.preventDefault();
+                                  handleCartClick(item)
+                                }}
                               style={{
                                 backgroundColor: "transparent",
                                 border: "none",
-                                color: "#e53637",
+                                color: "#C2A942",
                                 fontWeight: "bold",
                                 textDecoration: "none",
                               }}

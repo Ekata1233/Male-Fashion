@@ -55,22 +55,14 @@ function DealWeek() {
   }, []);
 
   return (
-    <div className="mt-5 py-5 deal">
+    <div className="mt-5 py-5 hero-bg">
       <Container>
         <Carousel interval={3000}>
           {deal.map((item, index) => (
             <Carousel.Item key={index}>
               <Row className="py-5">
-                <Col lg={4} className="position-relative pe-5">
-                  <div className="white-div"></div>
-                  <h3 className=" h11">
-                    <span className="text-danger">D</span>EAL{" "}
-                    <span className="text-danger">O</span>F{" "}
-                    <span className="text-danger">T</span>HE{" "}
-                    <span className="text-danger">W</span>EEK
-                  </h3>
-                </Col>
-                <Col lg={4} className="position-relative px-5">
+                
+                <Col lg={6} className="position-relative px-5">
                   <div className="deal-sale text-white rounded rounded-circle p-4">
                     <p className="sale">Sale Of</p>
                     <p className="fw-bold">₹ {item.price}</p>
@@ -80,13 +72,13 @@ function DealWeek() {
                     alt="Special Deal" className="" style={{width:"350px", height:"350px"}}
                   />
                 </Col>
-                <Col lg={4} className="text-start ps-5">
+                <Col lg={6} className="text-start ps-5">
                   <div className="ps-3">
-                    <p className="text-danger">
-                      <span className="text-danger">D</span>EAL{" "}
-                      <span className="text-danger">O</span>F{" "}
-                      <span className="text-danger">T</span>HE{" "}
-                      <span className="text-danger">W</span>EEK
+                    <p className="text-white fw-bold">
+                      <span className="">D</span>EAL{" "}
+                      <span className="">O</span>F{" "}
+                      <span className="">T</span>HE{" "}
+                      <span className="">W</span>EEK
                     </p>
                     <h1 className="fw-bold">{item.title}</h1>
                     <div className="mt-4 mb-3">

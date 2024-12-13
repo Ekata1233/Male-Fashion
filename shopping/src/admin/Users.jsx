@@ -20,7 +20,7 @@ function Users() {
       }
 
       const data = await response.json();
-      console.log(data.user); // Log the response directly
+      console.log(data.user); 
       setUsers(data.user);
     } catch (error) {
       console.error("Fetch error:", error);

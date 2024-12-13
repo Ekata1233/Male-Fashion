@@ -142,38 +142,81 @@ function Shop() {
     : products;
 
     const handleWishlistClick = (item) => {
-      const alreadyInWishlist = heart.find((prod) => prod._id === item._id);
   
+      const loginData = localStorage.getItem("login");
+    
+      if (!loginData) {
+          alert("Please log in to add items to your wishlist.");
+          return;
+      }
+    
+      const parsedLoginData = JSON.parse(loginData);
+      const userEmail = parsedLoginData?.user?.email; 
+    
+      if (!userEmail) {
+          alert("Email not found in login data.");
+          return;
+      }
+    
+      console.log("User Email: ", userEmail);
+    
+      const heartKey = `heart_${userEmail}`; 
+      const existingHeart = JSON.parse(localStorage.getItem(heartKey)) || [];
+      const alreadyInWishlist = existingHeart.find((prod) => prod._id === item._id);
+    
       if (alreadyInWishlist) {
-        alert("Product is already in your wishlist!");
+          alert("Product is already in your wishlist!");
       } else {
-        const updatedHeart = [...heart, item];
-        setHeart(updatedHeart);
-        localStorage.setItem("heart", JSON.stringify(updatedHeart));
+          const updatedHeart = [...existingHeart, item];
+          setHeart(updatedHeart);
+          localStorage.setItem(heartKey, JSON.stringify(updatedHeart));
+          alert("Product successfully added to wishlist.");
       }
     };
 
-    const handleCartClick=(item)=>{
-      const alreadyInCart = cart.find((prod)=>prod._id === item._id);
-      if(alreadyInCart){
-        alert("Product is already in your cartlist")
-      }else{
-        const updatedCart = [...cart,item];
-        setCart(updatedCart)
-        localStorage.setItem("cart",JSON.stringify(updatedCart))
+    const handleCartClick = (item) => {
+      const loginData = localStorage.getItem("login");
+  
+      if (!loginData) {
+          alert("Please log in to add items to your cart.");
+          return;
       }
-    }
+  
+      const parsedLoginData = JSON.parse(loginData);
+      const userEmail = parsedLoginData?.user?.email; // Access email from the nested 'user' object
+  
+      if (!userEmail) {
+          alert("Email not found in login data.");
+          return;
+      }
+  
+      console.log("User Email: ", userEmail);
+  
+      const cartKey = `cart_${userEmail}`; // Use email to generate a unique cart key
+      const existingCart = JSON.parse(localStorage.getItem(cartKey)) || [];
+      const alreadyInCart = existingCart.find((prod) => prod._id === item._id);
+  
+      if (alreadyInCart) {
+          alert("Product is already in your cart.");
+      } else {
+          const updatedCart = [...existingCart, item];
+          setCart(updatedCart);
+          localStorage.setItem(cartKey, JSON.stringify(updatedCart));
+          alert("Product successfully added to cart.");
+      }
+  };
     const isInWishlist = (item) => heart.some((prod) => prod._id === item._id);
     const isInCartList = (item) => cart.some((prod)=>prod._id === item._id)
 
   return (
-    <div className="shopDiv pb-4" style={{ paddingTop: "135px" }}>
+    <div className="shopDiv pb-4" style={{ paddingTop: "170px" }}>
       <div
-        className="bg-secondary bg-opacity-10 py-4 mb-5"
-        style={{ paddingLeft: "10%" }}
+        className="bg-secondary bg-opacity-10 mb-5"
+        
       >
-        <h4 className="fw-bold">Shop</h4>
-        <p>
+        <img src="/about_1.jpg" className="s"style={{width:"100%", height:"350px"}}/>
+        <h1 className="fw-bold shop">Shop</h1>
+        <p className="shop1">
           Home{" "}
           <span>
             <MdOutlineKeyboardArrowRight />
@@ -318,7 +361,10 @@ function Shop() {
                             right: "10px",
                           }}
                           className="heart"
-                          onClick={() => handleWishlistClick(item)}
+                          onClick={(e) =>{
+                            e.preventDefault();
+                            handleWishlistClick(item)
+                          }}
                         >
                           <img src="./heart.png" alt="Add to favorites" 
                           style={{ filter: isInWishlist(item) ? "invert(36%) sepia(80%) saturate(7482%) hue-rotate(340deg) brightness(91%) contrast(108%)" : "none" }} />
@@ -326,7 +372,7 @@ function Shop() {
                         <Card.Body className="text-start p-2">
                           <div className="addToCart">
                             <FaPlus
-                              style={{ color: "#e53637", fontSize: "12px" }}
+                              style={{ color: "#C2A942", fontSize: "12px" }}
                             />
                             <a
                               href=""
@@ -338,11 +384,14 @@ function Shop() {
                               //     JSON.stringify([...cart, item])
                               //   );
                               // }}
-                              onClick={()=>handleCartClick(item)}
+                              onClick={(e)=>
+                                {e.preventDefault();
+                                  handleCartClick(item)
+                                }}
                               style={{
                                 backgroundColor: "transparent",
                                 border: "none",
-                                color: "#e53637",
+                                color: "#C2A942",
                                 fontWeight: "bold",
                                 textDecoration: "none",
                               }}

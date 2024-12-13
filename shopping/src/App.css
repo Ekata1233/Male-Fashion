@@ -40,7 +40,7 @@
   content: "";
   height: 3px;
   width: 50%;
-  background: #e53637;
+  background: #C2A942;
   display: block;
   position: absolute;
   /* left: 0; */
@@ -57,7 +57,7 @@
   content: "";
   height: 3px;
   width: 50%;
-  background: #e53637;
+  background: #C2A942;
   display: block;
   position: absolute;
   /* left: 0; */
@@ -119,14 +119,19 @@
 .hero {}
 
 .cara-img {
-  margin-top: 9%;
+  margin-top: 12%;
+  margin-left: 50%;
+}
+.cara-img1 {
+  margin-top: 12%;
+  margin-left: 50%;
 }
 
 .caraText {
   position: absolute;
   top: 40%;
   left: 10%;
-  text-align: left !important;
+ text-align: left !important;
 }
 
 .heroButton {
@@ -150,17 +155,29 @@
   color: #111111;
   font-weight: 700;
 }
-
+.cara-img{
+  width: 700px;
+  
+}
+.cara-img1{
+  width: 505px;
+}
 .banner1 {
   position: absolute;
+  width: 440px;
+  height: 440px;
   right: 20%;
 }
 
 .banner2 {
   /* padding-top: 40%; */
+  width: 440px;
+  height: 440px;
 
 }
-
+.hero-bg{
+  background-color: #DBCC8F;
+}
 .banner2-row {
   /* position: absolute; */
   padding-top: 27%;
@@ -174,6 +191,8 @@
 
 .banner3 {
   padding-right: 14%;
+  width: 550px;
+  height: 440px;
 }
 
 .banner3-text {
@@ -208,7 +227,7 @@
 
 .banner-p:hover::after {
   /* opacity: 1; */
-  background-color: #e53637;
+  background-color: #DBCC8F;
   width: 45px;
 }
 
@@ -248,7 +267,7 @@
   /* margin-top: 5px; */
 }
 .deleteButton{
-  background-color: #e53637;
+  background-color: #C2A942;
   color: white !important;
   border-radius: 0% !important;
 }
@@ -260,17 +279,9 @@
   right: 10%;
   margin-top: -40px;
   background-color: #111111;
-  animation: blink 1s infinite alternate;
 }
 
-@keyframes blink {
-  0% {
-    background-color: #111111; /* Black */
-  }
-  50% {
-    background-color:#e53637; /* Red */
-  }
-}
+
 
 .sale{
   font-weight: 100;
@@ -283,57 +294,18 @@
   left: 22%;
   top: 45%;
   font-weight: 800;
-  border-right: 5px solid;
   white-space: nowrap;
   overflow: hidden;
-  animation: typing 2s  infinite alternate-reverse, cursor 0.4s  ;
-  animation-fill-mode: forwards;
 }
 
-@keyframes cursor {
-  50% {
-    border-color: transparent;
-  }
-}
 
-@keyframes typing {
-  0% {
-    width: 0;
-  }
-  100% {
-    width: 390px;
-  }
-}
 .white-div {
   width: 350px;
   height: 300px;
   position: relative;
-  background: repeating-conic-gradient(
-    from var(--a),
-    #111111 0%,
-    #111111 5%,
-    transparent 5%,
-    transparent 40%,
-    #ff2770 50%
-  );
-  animation: animate 4s linear infinite;
-  border-radius: 20px;
+ ;
 }
 
-@property --a {
-  syntax: '<angle>';
-  inherits: false;
-  initial-value: 0deg;
-}
-
-@keyframes animate {
-  0% {
-    --a: 0deg;
-  }
-  100% {
-    --a: 360deg;
-  }
-}
 
 .white-div::before {
   content: '';
@@ -379,7 +351,7 @@
   display: inline-block; 
   height: 3px;
   width: 100%;
-  background: #e53637;
+  background: #C2A942;
   position: absolute;
   left: 0;
   bottom: 0;
@@ -460,7 +432,9 @@
 .addTo :hover .heart{
   display: block !important;
 }
-
+.ultra{
+  color: #C2A942;
+}
 
 /* ******************************About************************************ */
 .going{
@@ -469,7 +443,7 @@
 }
 .Quote{
   font-size: 60px;
-  color: #e53637;
+  color: #C2A942;
 }
 .total h2{
   color: #111111;
@@ -487,10 +461,13 @@
 
 /* *****************************pages dropdown**************************** */
 .custom-dropdown .dropdown-menu {
-  background-color: black !important; 
+  background-color: #000 !important; 
   border-radius: 0px;
 }
-
+.custom-dropdown .dropdown-menu:hover .dropdown-item{
+  background-color: #000 !important;
+  color: white !important;
+}
 .custom-dropdown .dropdown-item {
   color: white; 
   font-size: 15px;
@@ -661,6 +638,71 @@
   border: none !important;
 }
 
+.blogDiv {
+  padding-top: 135px;
+}
+
+.blogCard {
+  border: none !important;
+  border-radius: 0% !important;
+}
+
+.cardBody {
+  background-color: white;
+  position: absolute;
+  top: 85%;
+  left: 12%;
+  /* margin-bottom: 100px !important; */
+}
+.read{
+  font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 4px;
+    cursor: pointer;
+}
+.read::after{
+  color: black;
+  content: "";
+  height: 3px;
+  width: 110px;
+  background: #111111;
+  display: block;
+  position: absolute;
+  /* left: 0; */
+  /* bottom: -8px; */
+  /* opacity: 0; */
+  transition: 0.5s ease-in;
+  pointer-events: none;
+}
+.read:hover::after {
+  /* opacity: 1; */
+  background-color: #DBCC8F;
+  width: 45px;
+}
+.gold{
+  color: #C2A942;
+}
+.shop{
+  position: absolute;
+  top: 33%;
+  color: rgb(77, 77, 77);
+  font-weight: 700;
+  left: 45%;
+}
+.shop1{
+  position: absolute;
+  top: 40%;
+  color:rgb(77, 77, 77);
+  font-weight: 700;
+  left: 45%;
+}
+.our{
+  position: absolute;
+  top: 40%;
+  color: #ffffff;
+  font-weight: 700;
+  left: 45%;
+}
 @media (max-width: 426px) {
   .cara-img {
     height: 400px;
