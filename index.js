@@ -9,6 +9,7 @@ const dealRoutes=require('./routes/dealRoute.js')
 const cartRoutes=require('./routes/cartRoute.js')
 const userRoutes=require('./routes/userRoute.js')
 const heartRoutes=require('./routes/heartRoute.js')
+const orderRoute=require('./routes/orderRoute.js')
 const cors=require('cors')
 
 
@@ -26,6 +27,7 @@ app.use("/api/cart",cartRoutes)
 app.use("/api/heart",heartRoutes)
 app.use("/api/deal",dealRoutes)
 app.use("/api/user",userRoutes)
+app.use("/api/orders",orderRoute)
 app.get("/",(req,resp)=>{
     resp.send("<h1>Welcome to E-commerce App</h1>")
 })

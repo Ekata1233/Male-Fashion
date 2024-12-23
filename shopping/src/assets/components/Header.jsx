@@ -126,6 +126,12 @@ function Header() {
                   <NavDropdown.Item as={Link} to="/BlogDetails">
                     Blog Details
                   </NavDropdown.Item>
+                  <NavDropdown.Item as={Link} to="/Accessories">
+                    Accessories
+                  </NavDropdown.Item>
+                  <NavDropdown.Item as={Link} to="/Shoes">
+                    Shoes
+                  </NavDropdown.Item>
                 </NavDropdown>
 
                 <Nav.Link as={Link} to="/Blog" className="px-4 nav-line m-1">

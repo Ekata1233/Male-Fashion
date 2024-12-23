@@ -1,8 +1,10 @@
 // import React from "react";
 import { Col, Container, Row } from "react-bootstrap";
 import Form from "react-bootstrap/Form";
+import { useNavigate } from "react-router-dom";
 
 function Footer() {
+  const navigate=useNavigate()
   return (
     <div className="bg-dark text-light text-center p-4 " style={{marginTop:"75px"}}>
       <Container>
@@ -18,31 +20,31 @@ function Footer() {
             </Col>
             <Col sm={6} lg={3} className="footerSecond mt-5 pt-2">
               <h6 className="text-start mb-4 fw-bold">SHOPPING</h6>
-              <p className="text-start text-light text-opacity-50">
+              <p className="text-start text-light text-opacity-50 " style={{ cursor: "pointer"}} onClick={()=>navigate("/Shop")}>
                 Clothing Store
               </p>
-              <p className="text-start text-light text-opacity-50">
+              <p className="text-start text-light text-opacity-50" style={{ cursor: "pointer"}} onClick={()=>navigate("/Shoes")}>
                 Trending Shoes
               </p>
-              <p className="text-start text-light text-opacity-50">
+              <p className="text-start text-light text-opacity-50" style={{ cursor: "pointer"}} onClick={()=>navigate("/ Accessories")}>
                 Accessories
               </p>
-              <p className="text-start text-light text-opacity-50">
+              <p className="text-start text-light text-opacity-50" style={{ cursor: "pointer"}} onClick={()=>scrollToComponent('/DealWeek')}>
                 Sale
               </p>
             </Col>
             <Col sm={6} lg={3} className="footerThird mt-5 pt-2">
               <h6 className="text-start mb-4 fw-bold">SHOPPING</h6>
-              <p className="text-start text-light text-opacity-50">
+              <p className="text-start text-light text-opacity-50" style={{ cursor: "pointer"}} onClick={()=>navigate("/Contact")}>
                 Contact Us
               </p>
-              <p className="text-start text-light text-opacity-50">
+              <p className="text-start text-light text-opacity-50" style={{ cursor: "pointer"}}>
                 Payment Methods
               </p>
-              <p className="text-start text-light text-opacity-50">
+              <p className="text-start text-light text-opacity-50" style={{ cursor: "pointer"}} onClick={()=>navigate("/Dashboard/user/Orders")}>
                 Delivery
               </p>
-              <p className="text-start text-light text-opacity-50">
+              <p className="text-start text-light text-opacity-50 " style={{ cursor: "pointer"}} onClick={()=>navigate("/Retun&Exchange")} >
                 Return and Exchanges
               </p>
             </Col>

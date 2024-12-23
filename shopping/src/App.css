@@ -600,7 +600,6 @@
 }
 
 
-/* Custom styles for the main accordion */
 .accordion-button {
   background-color: transparent !important;
   border: none !important;
@@ -702,6 +701,17 @@
   color: #ffffff;
   font-weight: 700;
   left: 45%;
+}
+.custom-input::placeholder {
+  color: #f8f9fa !important;
+  opacity: 1;
+}
+
+.custom-input {
+  border: none !important;
+  border-bottom: 1px solid #f8f9fa !important;
+  border-radius: 0 !important;
+  color: white !important;
 }
 @media (max-width: 426px) {
   .cara-img {

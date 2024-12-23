@@ -31,6 +31,7 @@ function Signin() {
         })
         localStorage.setItem("login",JSON.stringify(resp2))
         navigate('/')
+        window.location.reload();
       })
     })
   }

@@ -35,6 +35,9 @@ import FAQs from './assets/components/FAQs';
 import Categories from './admin/Categories';
 import DealWeek from './assets/components/DealWeek';
 import Deals from './admin/Deals';
+import RetunExchange from './assets/components/RetunExchange';
+import Accessories from './assets/components/Accessories';
+import Shoes from './assets/components/Shoes';
 
 
 function App() {
@@ -61,7 +64,13 @@ function App() {
           <Route path='/Blog' element={<Blog />} />
           <Route path='/BlogDetails' element={<BlogDetails/>} />
           <Route path='/Checkout' element={<Checkout/>} />
+
           <Route path='/getsingleproduct/:id' element={<SingleProduct/>} />
+
+          <Route path='/Retun&Exchange' element={<RetunExchange/>} />
+          <Route path='/Accessories' element={<Accessories/>} />
+          <Route path='/Shoes' element={<Shoes/>} />
+          <Route path='/DealWeek' element={<DealWeek/>} />
 
 
 
